@@ -8,5 +8,11 @@ public class Comment {
     private IntegerProperty Id_Issue;
     private StringProperty Message;
 
+    public Comment() {
+        this.Id_Comment = new SimpleIntegerProperty();
+        this.Id_Employee = new SimpleIntegerProperty();
+        this.Id_Issue = new SimpleIntegerProperty();
+        this.Message = new SimpleStringProperty();
+    }
 
 }
