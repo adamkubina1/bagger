@@ -13,11 +13,7 @@ public class DBUtil {
 
     private static Connection connection = null;
 
-    //Connection String
-    //String connStr = "jdbc:oracle:thin:Username/Password@IP:Port/SID";
-    //Username=HR, Password=HR, IP=localhost, IP=1521, SID=xe
     private static final String connectionString = "jdbc:mysql://localhost:3306/Bagger_test";
-
 
     public static void dbConnect() throws SQLException, ClassNotFoundException {
         try {
