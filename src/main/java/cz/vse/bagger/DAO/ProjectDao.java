@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProjectDao {
-    public static Project searchProject (String Id_Project) throws SQLException, ClassNotFoundException {
+    public static Project searchProject (int Id_Project) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Project WHERE Id_Project="+Id_Project;
 
         try {
@@ -76,7 +76,7 @@ public class ProjectDao {
     public static void insertProject (String Project_Name) throws SQLException, ClassNotFoundException {
         String updateStmt =
                 "BEGIN\n" +
-                        "INSERT INTO Comments\n" +
+                        "INSERT INTO Project\n" +
                         "(Project_Name)\n" +
                         "VALUES\n" +
                         "('"+Project_Name+"');\n" +
@@ -90,7 +90,7 @@ public class ProjectDao {
         }
     }
 
-    public static void deleteProjectWithId (String Id_Project) throws SQLException, ClassNotFoundException {
+    public static void deleteProjectWithId (int Id_Project) throws SQLException, ClassNotFoundException {
         String deleteStmt =
                 "BEGIN\n" +
                         "   DELETE FROM Project\n" +
