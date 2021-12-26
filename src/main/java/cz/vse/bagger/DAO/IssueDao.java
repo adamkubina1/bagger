@@ -122,9 +122,9 @@ public class IssueDao {
 
         try {
             DBUtil.dbExecuteUpdate(deleteStmt);
-        } catch (SQLException e) {
-            System.out.print("Error occurred while DELETE Operation: " + e);
-            throw e;
+        } catch (SQLException exception) {
+            System.out.print("Error occurred while DELETE Operation: " + exception);
+            throw exception;
         }
     }
 }
