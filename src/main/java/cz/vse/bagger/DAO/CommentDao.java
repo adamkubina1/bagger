@@ -1,7 +1,6 @@
 package cz.vse.bagger.DAO;
 
 import cz.vse.bagger.Models.Comment;
-import cz.vse.bagger.Models.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
