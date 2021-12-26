@@ -14,7 +14,7 @@ public class TeamDao {
             Team team = getTeamFromResultSet(resultTeam);
             return team;
         } catch (SQLException exception) {
-            System.out.println("While searching an employee with " + Id_Team + " id, an error occurred: " + exception);
+            System.out.println("While searching team with " + Id_Team + " id, an error occurred: " + exception);
             throw exception;
         }
     }

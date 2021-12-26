@@ -47,7 +47,7 @@ public class CommentDao {
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
         } catch (SQLException exception) {
-            System.out.print("Error occurred while DELETE Operation: " + exception);
+            System.out.print("Error occurred while INSERT Operation: " + exception);
             throw exception;
         }
     }
