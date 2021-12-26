@@ -35,7 +35,7 @@ public class CommentDao {
         return commentList;
     }
 
-    public static void insertEmp (int Id_Employee, int Id_Issue, String Message) throws SQLException, ClassNotFoundException {
+    public static void insertComment (int Id_Employee, int Id_Issue, String Message) throws SQLException, ClassNotFoundException {
         String updateStmt =
                 "BEGIN\n" +
                         "INSERT INTO Comments\n" +
