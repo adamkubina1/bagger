@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class EmployeeDao {
     public static Employee searchEmployee (String empId) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM employees WHERE employee_id="+empId;
+        String selectStmt = "SELECT * FROM Employee WHERE Id_Employee="+empId;
 
         try {
             ResultSet resultEmployee = DBUtil.dbExecuteQuery(selectStmt);
@@ -18,7 +18,6 @@ public class EmployeeDao {
             return employee;
         } catch (SQLException exception) {
             System.out.println("While searching an employee with " + empId + " id, an error occurred: " + exception);
-            //Return exception
             throw exception;
         }
     }
@@ -38,7 +37,7 @@ public class EmployeeDao {
     }
 
     public static ObservableList<Employee> searchEmployees () throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM employees";
+        String selectStmt = "SELECT * FROM Employee";
 
         try {
             ResultSet resultEmployees = DBUtil.dbExecuteQuery(selectStmt);
@@ -52,10 +51,8 @@ public class EmployeeDao {
 
     private static ObservableList<Employee> getEmployeeList(ResultSet resultEmployees) throws SQLException, ClassNotFoundException {
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
-
         while (resultEmployees.next()) {
             Employee employee = new Employee();
-            employee = new Employee();
             employee.setId_Employee(resultEmployees.getInt("Id_Employee"));
             employee.setId_Team(resultEmployees.getInt("Id_Team"));
             employee.setId_Login_Credentials(resultEmployees.getInt("Id_Login_Credentials"));
