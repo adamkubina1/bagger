@@ -1,7 +1,9 @@
 package cz.vse.bagger.DAO;
 
-public interface IDao {
-    void searchEntity();
+import java.util.List;
+
+public interface IDao<T> {
+    List<T> searchEntity();
     boolean updateEntity();
     boolean deleteEntity();
     boolean addEntity();
