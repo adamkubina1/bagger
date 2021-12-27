@@ -12,16 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import java.util.Objects;
 
 
 public class MainPageController {
@@ -33,11 +30,16 @@ public class MainPageController {
     @FXML TextField issueName;
     @FXML TextField issuePriority;
     @FXML TextArea issueDescription;
+    @FXML Button newProject;
+    @FXML Button newComment;
+    @FXML Button newIssue;
+    @FXML Button editIssue;
+    @FXML Button closeIssue;
 
 
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
-        System.out.println(RootLayoutController.loggedEmployee.getId_Team());
+
         RootLayoutController.loggedEmployeeTeam = TeamDao.searchTeam(String.valueOf(RootLayoutController.loggedEmployee.getId_Team()));
 
         userLabel.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
@@ -45,6 +47,15 @@ public class MainPageController {
 
         projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
 
+        newComment.setDisable(true);
+        newIssue.setDisable(true);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
+
+        if(Objects.isNull(TeamDao.searchTeamOnLeader(String.valueOf(RootLayoutController.loggedEmployee.getId_Employee())))){
+            newProject.setDisable(true);
+            //Todo add disable for delete project as well
+        }
     }
 
 
@@ -56,6 +67,11 @@ public class MainPageController {
         issueName.clear();
         issuePriority.clear();
         issueDescription.clear();
+
+        newComment.setDisable(true);
+        newIssue.setDisable(false);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
 
         issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
     }
@@ -70,6 +86,11 @@ public class MainPageController {
         issueDescription.clear();
 
         comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
+
+        newComment.setDisable(false);
+        newIssue.setDisable(false);
+        editIssue.setDisable(false);
+        closeIssue.setDisable(false);
 
         issueName.setText(selectedIssue.getIssue_Title());
         issuePriority.setText(String.valueOf(selectedIssue.getImportance()));
