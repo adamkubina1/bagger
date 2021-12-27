@@ -85,13 +85,9 @@ public class ProjectDao {
 
     public static void updateProject (int Id_Project, String Project_Name) throws SQLException, ClassNotFoundException {
         String updateStmt =
-                "BEGIN\n" +
                         "   UPDATE Project\n" +
                         "      SET Project_Name = '" + Project_Name + "'\n" +
-                        "    WHERE Id_Project = " + Id_Project + ";\n" +
-                        "   COMMIT;\n" +
-                        "END;";
-
+                        "    WHERE Id_Project = " + Id_Project + ";";
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
         }
@@ -144,12 +140,8 @@ public class ProjectDao {
 
     public static void deleteProjectWithId (int Id_Project) throws SQLException, ClassNotFoundException {
         String deleteStmt =
-                "BEGIN\n" +
                         "   DELETE FROM Project\n" +
-                        "         WHERE Id_Project ="+ Id_Project +";\n" +
-                        "   COMMIT;\n" +
-                        "END;";
-
+                        "         WHERE Id_Project ="+ Id_Project +";";
         try {
             DBUtil.dbExecuteUpdate(deleteStmt);
         } catch (SQLException exception) {

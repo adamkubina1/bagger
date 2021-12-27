@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class Login_CredentialsDAO {
     //select, update
-    public static Login_Credentials searchLoginCredentials (String Id_Login_Credentials) throws SQLException, ClassNotFoundException {
+    public static Login_Credentials searchLoginCredentials (int Id_Login_Credentials) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials inner join Employee on Login_Credentials.Id_Login_Credentials = Employee.Id_Login_Credentials where Employee.Id_Employee = "+Id_Login_Credentials;
 
         try {
@@ -48,13 +48,9 @@ public class Login_CredentialsDAO {
 
  public static void updateLoginCredentialsPassword (int Id_Login_Credentials, String Password) throws SQLException, ClassNotFoundException {
      String updateStmt =
-     "BEGIN\n" +
      "   UPDATE Login_Credentials\n" +
      "      SET Password = '" + Password + "'\n" +
-     "    WHERE Id_Login_Credentials = " + Id_Login_Credentials + ";\n" +
-     "   COMMIT;\n" +
-     "END;";
-
+     "    WHERE Id_Login_Credentials = " + Id_Login_Credentials + ";";
     try {
         DBUtil.dbExecuteUpdate(updateStmt);
     }
