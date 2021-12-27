@@ -1,20 +1,12 @@
 package cz.vse.bagger.Controllers;
 
 import cz.vse.bagger.DAO.EmployeeDao;
-import cz.vse.bagger.DAO.ProjectDao;
-import cz.vse.bagger.DAO.TeamDao;
+
 import cz.vse.bagger.Models.Employee;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
