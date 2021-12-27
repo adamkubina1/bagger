@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,6 +24,7 @@ import java.util.Optional;
 
 
 public class MainPageController {
+    public ImageView deleteProject;
     @FXML Label userLabel;
     @FXML Label teamLabel;
     @FXML ListView<Project> projects;
@@ -55,7 +57,7 @@ public class MainPageController {
 
         if(Objects.isNull(TeamDao.searchTeamOnLeader(String.valueOf(RootLayoutController.loggedEmployee.getId_Employee())))){
             newProject.setDisable(true);
-            //Todo add disable for delete project as well
+            deleteProject.setDisable(true);
         }
     }
 
@@ -182,9 +184,34 @@ public class MainPageController {
         if (result.get() == ButtonType.OK){
             Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
 
-            IssueDao.deleteIssueWithId(selectedIssue.getId_Issue());
+            if(Objects.isNull(selectedIssue)){ // This is not necesary but ensuring safety, button should be disabled in unsafe situations
+                RootLayoutController.displayAlert("Delete error", "No issue selected", "Please select issue for deletion.");
+            } else {
 
-            reload();
+                IssueDao.deleteIssueWithId(selectedIssue.getId_Issue());
+
+                reload();
+            }
+
+        }
+    }
+
+    public void deleteProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        Alert conformation = RootLayoutController.giveConfirmation("Delete project", "Permanent permanent removal", "You are about to permanently delete this project, are you sure?");
+
+        Optional<ButtonType> result = conformation.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Project selectedProject = projects.getSelectionModel().getSelectedItem();
+
+            if(Objects.isNull(selectedProject)){
+                RootLayoutController.displayAlert("Delete error", "No project selected", "Please select project for deletion.");
+            } else {
+                ProjectDao.deleteProjectWithId(selectedProject.getId_Project());
+
+                reload();
+            }
+
+
         }
     }
 }
