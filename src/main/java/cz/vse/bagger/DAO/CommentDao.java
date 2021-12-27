@@ -37,13 +37,10 @@ public class CommentDao {
 
     public static void insertComment (int Id_Employee, int Id_Issue, String Message) throws SQLException, ClassNotFoundException {
         String updateStmt =
-                "BEGIN\n" +
-                        "INSERT INTO Comments\n" +
+                        "INSERT INTO Comment\n" +
                         "(Id_Employee, Id_Issue, Message)\n" +
                         "VALUES\n" +
-                        "('"+Id_Employee+"', '"+Id_Issue+"','"+Message+"');\n" +
-                        "END;";
-
+                        "('"+Id_Employee+"', '"+Id_Issue+"','"+Message+"');";
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
         } catch (SQLException exception) {

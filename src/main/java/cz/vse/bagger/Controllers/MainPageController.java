@@ -95,9 +95,15 @@ public class MainPageController {
     }
 
     public void newComment(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/comment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/comment.fxml"));
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+
+        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+        CommentController commentController = loader.getController();
+        commentController.transferIssueId(selectedIssue.getId_Issue());
 
         primaryStage.setScene(scene);
         primaryStage.show();
