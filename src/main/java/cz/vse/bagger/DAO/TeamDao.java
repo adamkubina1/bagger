@@ -18,6 +18,19 @@ public class TeamDao {
             throw exception;
         }
     }
+    public static Team searchTeamOnLeader (String Id_Leader) throws SQLException, ClassNotFoundException {
+        String selectStmt = "SELECT * FROM Team WHERE Id_Leader="+Id_Leader;
+
+        try {
+            ResultSet resultTeam = DBUtil.dbExecuteQuery(selectStmt);
+            Team team = getTeamFromResultSet(resultTeam);
+            return team;
+        } catch (SQLException exception) {
+            System.out.println("While searching team with " + Id_Leader + " id, an error occurred: " + exception);
+            throw exception;
+        }
+    }
+
     private static Team getTeamFromResultSet(ResultSet resultTeam) throws SQLException
     {
         Team team = null;
