@@ -31,6 +31,29 @@ public class ProjectDao {
         return project;
     }
 
+    public static Project searchProject (String Project_Name) throws SQLException, ClassNotFoundException {
+        String selectStmt = "SELECT * FROM Project WHERE Project_Name="+"'"+Project_Name+"'";
+
+        try {
+            ResultSet resultProject = DBUtil.dbExecuteQuery(selectStmt);
+            Project project = getProjectFromString(resultProject);
+            return project;
+        } catch (SQLException exception) {
+            System.out.println("While searching project with " + Project_Name + " name, an error occurred: " + exception);
+            throw exception;
+        }
+    }
+    private static Project getProjectFromString(ResultSet resultProject) throws SQLException
+    {
+        Project project = null;
+        if (resultProject.next()) {
+            project = new Project();
+            project.setId_Project(resultProject.getInt("Id_Project"));
+            project.setProject_Name(resultProject.getString("Project_Name"));
+        }
+        return project;
+    }
+
     public static ObservableList<Project> searchProjects () throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Projects";
 
@@ -114,7 +137,7 @@ public class ProjectDao {
 
     public static void insertTeam_projectRelationship (int Id_team, int Id_project) throws SQLException, ClassNotFoundException {
         String updateStmt =
-                "INSERT INTO team_project_relationship\n" +
+                "INSERT INTO Team_Project_Relationship\n" +
                         "(Id_Team, Id_Project)\n" +
                         "VALUES\n" +
                         "('"+Id_team+"','"+Id_project+"');";
