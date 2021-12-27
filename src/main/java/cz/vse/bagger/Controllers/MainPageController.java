@@ -12,16 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import java.util.Objects;
 
 
 public class MainPageController {
@@ -33,11 +30,16 @@ public class MainPageController {
     @FXML TextField issueName;
     @FXML TextField issuePriority;
     @FXML TextArea issueDescription;
+    @FXML Button newProject;
+    @FXML Button newComment;
+    @FXML Button newIssue;
+    @FXML Button editIssue;
+    @FXML Button closeIssue;
 
 
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
-        System.out.println(RootLayoutController.loggedEmployee.getId_Team());
+
         RootLayoutController.loggedEmployeeTeam = TeamDao.searchTeam(String.valueOf(RootLayoutController.loggedEmployee.getId_Team()));
 
         userLabel.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
@@ -45,17 +47,33 @@ public class MainPageController {
 
         projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
 
+        newComment.setDisable(true);
+        newIssue.setDisable(true);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
+
+        if(Objects.isNull(TeamDao.searchTeamOnLeader(String.valueOf(RootLayoutController.loggedEmployee.getId_Employee())))){
+            newProject.setDisable(true);
+            //Todo add disable for delete project as well
+        }
     }
 
 
     public void selectedProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
 
+        if(Objects.isNull(selectedProject))return;
+
         issues.getItems().clear();
         comments.getItems().clear();
         issueName.clear();
         issuePriority.clear();
         issueDescription.clear();
+
+        newComment.setDisable(true);
+        newIssue.setDisable(false);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
 
         issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
     }
@@ -64,6 +82,8 @@ public class MainPageController {
     public void selectedIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
 
+        if(Objects.isNull(selectedIssue))return;
+
         comments.getItems().clear();
         issueName.clear();
         issuePriority.clear();
@@ -71,15 +91,25 @@ public class MainPageController {
 
         comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
 
+        newComment.setDisable(false);
+        newIssue.setDisable(false);
+        editIssue.setDisable(false);
+        closeIssue.setDisable(false);
+
         issueName.setText(selectedIssue.getIssue_Title());
         issuePriority.setText(String.valueOf(selectedIssue.getImportance()));
         issueDescription.setText(selectedIssue.getIssue_Description());
     }
 
     public void newProject(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/newProject.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newProject.fxml"));
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+
+        ProjectController projectController = loader.getController();
+        projectController.transferController(this);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -126,5 +156,21 @@ public class MainPageController {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void reload() throws SQLException, ClassNotFoundException {
+        projects.getItems().clear();
+        issues.getItems().clear();
+        comments.getItems().clear();
+        issueName.clear();
+        issuePriority.clear();
+        issueDescription.clear();
+
+        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
+
+        newComment.setDisable(true);
+        newIssue.setDisable(true);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
     }
 }

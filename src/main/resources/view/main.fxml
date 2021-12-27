@@ -106,7 +106,7 @@
                         <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="200.0" prefWidth="365.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
-                              <Button onMouseClicked="#newProject" mnemonicParsing="false" text="New project">
+                              <Button fx:id="newProject" onMouseClicked="#newProject" mnemonicParsing="false" text="New project">
                                  <HBox.margin>
                                     <Insets left="60.0" right="30.0" />
                                  </HBox.margin>
@@ -160,7 +160,7 @@
                         <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="200.0" prefWidth="365.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
-                              <Button onMouseClicked="#newIssue" mnemonicParsing="false" text="New issue">
+                              <Button fx:id="newIssue" onMouseClicked="#newIssue" mnemonicParsing="false" text="New issue">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -221,7 +221,7 @@
                            </VBox.margin>
                         </HBox>
                         <ListView fx:id="comments" prefHeight="602.0" prefWidth="350.0" />
-                        <Button onMouseClicked="#newComment" mnemonicParsing="false" text="New comment">
+                        <Button fx:id="newComment" onMouseClicked="#newComment" mnemonicParsing="false" text="New comment">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -257,12 +257,12 @@
                            </font>
                         </Label>
                         <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="360.0" />
-                        <Button onMouseClicked="#editIssue" mnemonicParsing="false" text="Edit issue">
+                        <Button fx:id="editIssue" onMouseClicked="#editIssue" mnemonicParsing="false" text="Edit issue">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Close issue">
+                        <Button fx:id="closeIssue" mnemonicParsing="false" text="Close issue">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
