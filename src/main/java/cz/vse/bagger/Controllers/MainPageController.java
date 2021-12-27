@@ -62,6 +62,8 @@ public class MainPageController {
     public void selectedProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
 
+        if(Objects.isNull(selectedProject))return;
+
         issues.getItems().clear();
         comments.getItems().clear();
         issueName.clear();
@@ -79,6 +81,8 @@ public class MainPageController {
 
     public void selectedIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+
+        if(Objects.isNull(selectedIssue))return;
 
         comments.getItems().clear();
         issueName.clear();
@@ -98,9 +102,14 @@ public class MainPageController {
     }
 
     public void newProject(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/newProject.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newProject.fxml"));
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+
+        ProjectController projectController = loader.getController();
+        projectController.transferController(this);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -147,5 +156,21 @@ public class MainPageController {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void reload() throws SQLException, ClassNotFoundException {
+        projects.getItems().clear();
+        issues.getItems().clear();
+        comments.getItems().clear();
+        issueName.clear();
+        issuePriority.clear();
+        issueDescription.clear();
+
+        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
+
+        newComment.setDisable(true);
+        newIssue.setDisable(true);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
     }
 }

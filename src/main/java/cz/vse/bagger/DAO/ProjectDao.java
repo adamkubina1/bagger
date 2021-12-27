@@ -45,7 +45,22 @@ public class ProjectDao {
     }
 
     public static ObservableList<Project> searchProjects (int teamID) throws SQLException, ClassNotFoundException {
-        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project inner join Team_Project_Relationship on Project.Id_Project = Team_Project_Relationship.Id_Project where Project.Id_Project =" + teamID;
+        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project inner join Team_Project_Relationship \n" +
+                "on Project.Id_Project = Team_Project_Relationship.Id_Project \n" +
+                "where Team_Project_Relationship.Id_Team =" + teamID;
+
+        try {
+            ResultSet resultProjects = DBUtil.dbExecuteQuery(selectStmt);
+            ObservableList<Project> projectList = getProjectList(resultProjects);
+            return projectList;
+        } catch (SQLException exception) {
+            System.out.println("SQL select operation has been failed: " + exception);
+            throw exception;
+        }
+    }
+
+    public static ObservableList<Project> searchNotUsedProjects (int teamID) throws SQLException, ClassNotFoundException {
+        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Team_Project_Relationship RIGHT join Project on Team_Project_Relationship.Id_Project = Project.Id_Project where Team_Project_Relationship.Id_Team <> " + teamID;
 
         try {
             ResultSet resultProjects = DBUtil.dbExecuteQuery(selectStmt);
@@ -100,12 +115,24 @@ public class ProjectDao {
             throw exception;
         }
     }
-    public static void insertTeamToProject (int Id_Project, int Id_team ) throws SQLException, ClassNotFoundException {
+
+    public static void insertTeam_projectRelationship (int Id_team, int Id_project) throws SQLException, ClassNotFoundException {
         String updateStmt =
                 "INSERT INTO team_project_relationship\n" +
                         "(Id_Team, Id_Project)\n" +
                         "VALUES\n" +
-                        "('"+Id_team+"', `"+Id_Project+"`)";
+                        "('"+Id_team+"','"+Id_project+"');";
+
+        try {
+            DBUtil.dbExecuteUpdate(updateStmt);
+        } catch (SQLException exception) {
+            System.out.print("Error occurred while INSERT Operation: " + exception);
+            throw exception;
+        }
+    }
+    public static void insertTeamToProject (int Id_Project, int Id_team ) throws SQLException, ClassNotFoundException {
+        String updateStmt = "INSERT INTO Team_Project_Relationship (Id_Team, Id_Project) VALUES ('"+Id_team+"', '"+Id_Project+"');";
+
 
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
