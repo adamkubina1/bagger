@@ -103,7 +103,7 @@
                               <Insets top="30.0" />
                            </padding>
                         </HBox>
-                        <ListView fx:id="projects" onMouseClicked="#clickProject" prefHeight="200.0" prefWidth="365.0" />
+                        <ListView fx:id="projects" prefHeight="200.0" prefWidth="365.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
                               <Button mnemonicParsing="false" text="New project">
