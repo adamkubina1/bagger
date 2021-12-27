@@ -88,12 +88,24 @@ public class ProjectDao {
 
     public static void insertProject (String Project_Name) throws SQLException, ClassNotFoundException {
         String updateStmt =
-                "BEGIN\n" +
-                        "INSERT INTO Project\n" +
+                "INSERT INTO Project\n" +
                         "(Project_Name)\n" +
                         "VALUES\n" +
-                        "('"+Project_Name+"');\n" +
-                        "END;";
+                        "('"+Project_Name+"')";
+
+        try {
+            DBUtil.dbExecuteUpdate(updateStmt);
+        } catch (SQLException exception) {
+            System.out.print("Error occurred while INSERT Operation: " + exception);
+            throw exception;
+        }
+    }
+    public static void insertTeamToProject (int Id_Project, int Id_team ) throws SQLException, ClassNotFoundException {
+        String updateStmt =
+                "INSERT INTO team_project_relationship\n" +
+                        "(Id_Team, Id_Project)\n" +
+                        "VALUES\n" +
+                        "('"+Id_team+"', `"+Id_Project+"`)";
 
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
