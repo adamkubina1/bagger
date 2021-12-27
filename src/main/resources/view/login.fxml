@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.LoginController">
    <bottom>
-      <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login" BorderPane.alignment="CENTER">
+      <Button fx:id="loginButton" onMouseClicked="#clickLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="20.0" />
          </BorderPane.margin>
@@ -21,8 +21,8 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="200.0" prefHeight="142.0" prefWidth="400.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <TextField maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Username" />
-            <TextField maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Password">
+            <TextField fx:id="username" maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Username" />
+            <TextField fx:id="password" maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Password">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
