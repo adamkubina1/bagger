@@ -28,8 +28,7 @@ public class SettingController {
         user_Info.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
         Employee leader = EmployeeDao.searchEmployee(RootLayoutController.loggedEmployeeTeam.getId_Leader());
         team_Leader.setText(leader.getName() + " " + leader.getSurname());
-        //team_Members.getItems().addAll(EmployeeDao.searchEmployees(RootLayoutController.loggedEmployeeTeam.getId_Team()));
-
+        team_Members.getItems().addAll(EmployeeDao.searchEmployeesByTeamId(RootLayoutController.loggedEmployeeTeam.getId_Team()));
     }
 
 }
