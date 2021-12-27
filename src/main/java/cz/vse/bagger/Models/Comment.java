@@ -15,6 +15,11 @@ public class Comment {
         this.Message = new SimpleStringProperty();
     }
 
+    @Override
+    public String toString() {
+        return Message.getValue();
+    }
+
     public int getId_Comment() {
         return Id_Comment.get();
     }

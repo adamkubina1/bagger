@@ -1,6 +1,7 @@
 package cz.vse.bagger.DAO;
 
 import cz.vse.bagger.Models.Issue;
+import cz.vse.bagger.Models.Project;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,6 +23,21 @@ public class IssueDao {
             throw exception;
         }
     }
+
+    public static ObservableList<Issue> searchIssueOnProject (int Id_Project) throws SQLException, ClassNotFoundException {
+        String selectStmt = "SELECT * FROM Issue WHERE Id_Project="+Id_Project;
+
+        try {
+            ResultSet resultIssue = DBUtil.dbExecuteQuery(selectStmt);
+            ObservableList<Issue> issues = getIssueListFromResultSet(resultIssue);
+            return issues;
+        } catch (SQLException exception) {
+            System.out.println("While searching issue with " + Id_Project + " id, an error occurred: " + exception);
+            throw exception;
+        }
+    }
+
+
     private static Issue getIssueFromResultSet(ResultSet resultIssue) throws SQLException {
         Issue issue = null;
         if (resultIssue.next()) {
@@ -37,6 +53,23 @@ public class IssueDao {
             issue.setImportance(resultIssue.getInt("Importance"));
         }
         return issue;
+    }
+    private static ObservableList<Issue> getIssueListFromResultSet(ResultSet resultIssues) throws SQLException, ClassNotFoundException {
+        ObservableList<Issue> issuesList = FXCollections.observableArrayList();
+        while (resultIssues.next()) {
+            Issue issue = new Issue();
+            issue.setId_Issue(resultIssues.getInt("Id_Issue"));
+            issue.setId_Project(resultIssues.getInt("Id_Project"));
+            issue.setId_Creater(resultIssues.getInt("Id_Creater"));
+            issue.setId_Closer(resultIssues.getInt("Id_Closer"));
+            issue.setIssue_Title(resultIssues.getString("Issue_Title"));
+            issue.setIssue_Description(resultIssues.getString("Issue_Description"));
+            issue.setStart_Date(resultIssues.getDate("Start_Date"));
+            issue.setEnd_Date(resultIssues.getDate("End_Date"));
+            issue.setImportance(resultIssues.getInt("Importance"));
+            issuesList.add(issue);
+        }
+        return issuesList;
     }
 
     public static ObservableList<Issue> searchProjects (int Id_Project) throws SQLException, ClassNotFoundException {
