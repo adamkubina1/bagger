@@ -117,9 +117,16 @@ public class MainPageController {
     }
 
     public void newIssue(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/newIssue.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newIssue.fxml\""));
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+
+        Project selectedProject = projects.getSelectionModel().getSelectedItem();
+        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+        IssueController issueController = loader.getController();
+        issueController.getId_Project(selectedProject.getId_Project(), selectedIssue.getId_Issue());
 
         primaryStage.setScene(scene);
         primaryStage.show();
