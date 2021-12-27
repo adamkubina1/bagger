@@ -15,6 +15,11 @@ public class Issue {
     private SimpleObjectProperty<Date> End_Date;
     private IntegerProperty Importance;
 
+    @Override
+    public String toString() {
+        return Issue_Title.getValue();
+    }
+
     public Issue() {
         this.Id_Issue = new SimpleIntegerProperty();
         this.Id_Project = new SimpleIntegerProperty();
