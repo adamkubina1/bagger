@@ -157,7 +157,7 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <ListView fx:id="issues" prefHeight="200.0" prefWidth="365.0" />
+                        <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="200.0" prefWidth="365.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
                               <Button mnemonicParsing="false" text="New project">

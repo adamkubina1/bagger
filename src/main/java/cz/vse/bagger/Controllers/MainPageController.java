@@ -1,5 +1,6 @@
 package cz.vse.bagger.Controllers;
 
+import cz.vse.bagger.DAO.CommentDao;
 import cz.vse.bagger.DAO.IssueDao;
 import cz.vse.bagger.DAO.ProjectDao;
 import cz.vse.bagger.DAO.TeamDao;
@@ -54,5 +55,19 @@ public class MainPageController {
         issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
     }
 
-    
+
+    public void selectedIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+
+        comments.getItems().clear();
+        issueName.clear();
+        issuePriority.clear();
+        issueDescription.clear();
+
+        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
+
+        issueName.setText(selectedIssue.getIssue_Title());
+        issuePriority.setText(String.valueOf(selectedIssue.getImportance()));
+        issueDescription.setText(selectedIssue.getIssue_Description());
+    }
 }
