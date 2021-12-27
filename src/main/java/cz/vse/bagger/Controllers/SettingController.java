@@ -46,6 +46,7 @@ public class SettingController {
         }
         else {
             Login_CredentialsDAO.updateLoginCredentialsPassword(login_credentials.getId_Login_Credentials(), new_Password.getText());
+            RootLayoutController.displayConfirmation("Úspěch", "Heslo změněno", "Úspěšně jsi si změnil heslo na nové!");
         }
     }
 }
