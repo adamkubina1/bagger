@@ -18,4 +18,14 @@ public class RootLayoutController {
         alert.showAndWait();
     }
 
+    public static void displayConfirmation(String title, String header, String description){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(description);
+
+        alert.showAndWait();
+    }
+
 }
