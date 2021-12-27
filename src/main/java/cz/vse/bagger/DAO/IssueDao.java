@@ -124,12 +124,12 @@ public class IssueDao {
         }
     }
 
-    public static void insertIssue (int Id_Issue, int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
+    public static void insertIssue (int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "INSERT INTO Issue\n" +
                         "(Id_Project, Id_Creater, Id_Closer, Issue_Title, Issue_Description, Start_Date, End_Date, Importance)\n" +
                         "VALUES\n" +
-                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Id_Closer+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+End_Date+"', '"+Importance+"',);";
+                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Id_Closer+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+End_Date+"', '"+Importance+"');";
 
         try {
             DBUtil.dbExecuteUpdate(updateStmt);

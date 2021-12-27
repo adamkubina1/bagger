@@ -6,10 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 public class IssueController {
     @FXML TextField newIssue;
@@ -17,19 +17,20 @@ public class IssueController {
     @FXML TextArea newIssueDescription;
     @FXML Button newIssueButton;
     int Id_Project;
-    int Id_Issue;
 
 
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
-        Calendar calendar = Calendar.getInstance();
-        Date date = (Date) calendar.getTime();
-        int newIssuePriorityInt = Integer.parseInt(newIssueDescription.getText());
-        IssueDao.insertIssue(Id_Issue, Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), 0, newIssue.getText(), newIssueDescription.getText(), date,null, newIssuePriorityInt);
+        long millis=System.currentTimeMillis();
+        java.sql.Date date = new java.sql.Date(millis);
+        int newIssuePriorityInt = Integer.parseInt(newIssuePriority.getText());
+        java.sql.Date endDate = new java.sql.Date(00);//FUCKING HEELLLL
+        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date,endDate, newIssuePriorityInt);//FUCKING HELLL  OTVIRAME ZAVIRAME ROVKOUUUUUUUUUUUU
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
+        Stage stage = (Stage) newIssueButton.getScene().getWindow();
+        stage.close();
     }
 
-    public void getId_Project(int Id_Project, int Id_Issue) {
+    public void getId_Project(int Id_Project) {
         this.Id_Project = Id_Project;
-        this.Id_Issue = Id_Issue;
     }
 }

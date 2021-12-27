@@ -124,9 +124,8 @@ public class MainPageController {
         Stage primaryStage = new Stage();
 
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
-        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         IssueController issueController = loader.getController();
-        issueController.getId_Project(selectedProject.getId_Project(), selectedIssue.getId_Issue());
+        issueController.getId_Project(selectedProject.getId_Project());
 
         primaryStage.setScene(scene);
         primaryStage.show();
