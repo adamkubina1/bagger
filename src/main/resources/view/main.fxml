@@ -111,7 +111,7 @@
                                     <Insets left="60.0" right="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="deleteProject" onMouseClicked="#deleteProject" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../imgs/delete-logo.png" />
                                  </image>
