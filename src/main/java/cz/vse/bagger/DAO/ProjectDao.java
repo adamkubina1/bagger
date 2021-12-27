@@ -32,7 +32,7 @@ public class ProjectDao {
     }
 
     public static Project searchProject (String Project_Name) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Project WHERE Project_Name="+Project_Name;
+        String selectStmt = "SELECT * FROM Project WHERE Project_Name="+"'"+Project_Name+"'";
 
         try {
             ResultSet resultProject = DBUtil.dbExecuteQuery(selectStmt);
@@ -141,7 +141,7 @@ public class ProjectDao {
 
     public static void insertTeam_projectRelationship (int Id_team, int Id_project) throws SQLException, ClassNotFoundException {
         String updateStmt =
-                "INSERT INTO team_project_relationship\n" +
+                "INSERT INTO Team_Project_Relationship\n" +
                         "(Id_Team, Id_Project)\n" +
                         "VALUES\n" +
                         "('"+Id_team+"','"+Id_project+"');";

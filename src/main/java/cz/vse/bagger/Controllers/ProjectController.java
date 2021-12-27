@@ -38,10 +38,10 @@ public class ProjectController {
 
     public void createProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         String projectNameText = projectName.getText();
-
+        Project project = ProjectDao.searchProject(projectNameText);
         if(projectNameText.equals("")){
             RootLayoutController.displayAlert("Missing fields", "One of the fields is missing value", "Please, check if you entered valid values into all fields");
-        } else if (ProjectDao.searchProject(projectNameText).equals(null)) {
+        } else if (!(Objects.isNull(project))) {
             RootLayoutController.displayAlert("Error", "Existující projekt", "Zadaný projekt v databázi už existuje");
         }
         else {
