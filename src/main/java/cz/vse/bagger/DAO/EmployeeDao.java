@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeeDao {
-    public static Employee searchEmployee (String empId) throws SQLException, ClassNotFoundException {
+    public static Employee searchEmployee (int empId) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Employee WHERE Id_Employee="+empId;
 
         try {

@@ -32,7 +32,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
+            <TextField fx:id="user_Info" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
             <Label text="My team leader">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -41,7 +41,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
+            <TextField fx:id="team_Leader" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
             <Label text="My team members">
                <font>
                   <Font size="18.0" />
@@ -50,7 +50,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <ListView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" />
+            <ListView fx:id="team_Members" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" />
          </children>
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
