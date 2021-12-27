@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 
 
 public class MainPageController {
@@ -172,5 +173,18 @@ public class MainPageController {
         newIssue.setDisable(true);
         editIssue.setDisable(true);
         closeIssue.setDisable(true);
+    }
+
+    public void closeIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
+        Alert conformation = RootLayoutController.giveConfirmation("Close issue", "Permanent issue removal", "You are about to permanently remove this issue, are you sure?");
+
+        Optional<ButtonType> result = conformation.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+
+            IssueDao.deleteIssueWithId(selectedIssue.getId_Issue());
+
+            reload();
+        }
     }
 }
