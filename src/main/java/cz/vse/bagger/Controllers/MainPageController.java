@@ -117,7 +117,7 @@ public class MainPageController {
     }
 
     public void newIssue(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newIssue.fxml\""));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newIssue.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
