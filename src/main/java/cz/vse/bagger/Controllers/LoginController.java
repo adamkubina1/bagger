@@ -1,6 +1,8 @@
 package cz.vse.bagger.Controllers;
 
+import cz.vse.bagger.DAO.EmployeeDao;
 import cz.vse.bagger.DAO.Login_CredentialsDAO;
+import cz.vse.bagger.Models.Employee;
 import cz.vse.bagger.Models.Login_Credentials;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +18,6 @@ import java.util.Objects;
 
 
 public class LoginController{
-
-    private RootLayoutController rootLayoutController = new RootLayoutController();
-
     @FXML private TextField username;
     @FXML private TextField password;
     @FXML private Button loginButton;
@@ -31,7 +30,7 @@ public class LoginController{
 
         // One or both of the fields are blank
         if (( usernameText.equals("") || passwordText.equals(""))){
-            rootLayoutController.displayAlert("Failed to login", "Missing field", "Please enter your login credentials into all required fields.");
+            RootLayoutController.displayAlert("Failed to login", "Missing field", "Please enter your login credentials into all required fields.");
         }
         else {
 
@@ -39,7 +38,7 @@ public class LoginController{
 
             // The validation of user credentials failed
             if(Objects.isNull(login_credentials)){
-                rootLayoutController.displayAlert("Failed to login", "Wrong username of password", "Try to check if your login credentials are typed in correctly");
+                RootLayoutController.displayAlert("Failed to login", "Wrong username of password", "Try to check if your login credentials are typed in correctly");
                 username.clear();
                 password.clear();
             }
@@ -50,7 +49,10 @@ public class LoginController{
         }
     }
 
-    private void succesfullLogin(Login_Credentials validLoginCredentials){
+    private void succesfullLogin(Login_Credentials validLoginCredentials) throws SQLException, ClassNotFoundException {
+        Employee loggedEmployee = EmployeeDao.searchEmployee(String.valueOf(validLoginCredentials.getId_Login_Credentials()));
+        RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
             Parent root = (Parent) fxmlLoader.load();
