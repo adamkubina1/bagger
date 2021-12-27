@@ -14,6 +14,11 @@ public class Project {
         this.Project_Name = new SimpleStringProperty();
     }
 
+    @Override
+    public String toString() {
+        return Project_Name.getValue();
+    }
+
     public int getId_Project() {
         return Id_Project.get();
     }
