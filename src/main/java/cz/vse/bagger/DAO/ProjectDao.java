@@ -44,6 +44,19 @@ public class ProjectDao {
         }
     }
 
+    public static ObservableList<Project> searchProjects (String teamID) throws SQLException, ClassNotFoundException {
+        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project inner join Team_Project_Relationship on Project.Id_Project = Team_Project_Relationship.Id_Project where Project.Id_Project =" + teamID;
+
+        try {
+            ResultSet resultProjects = DBUtil.dbExecuteQuery(selectStmt);
+            ObservableList<Project> projectList = getProjectList(resultProjects);
+            return projectList;
+        } catch (SQLException exception) {
+            System.out.println("SQL select operation has been failed: " + exception);
+            throw exception;
+        }
+    }
+
     private static ObservableList<Project> getProjectList(ResultSet resultProjects) throws SQLException, ClassNotFoundException {
         ObservableList<Project> projectList = FXCollections.observableArrayList();
         while (resultProjects.next()) {
