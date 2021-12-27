@@ -41,9 +41,12 @@ public class ProjectController {
 
         if(projectNameText.equals("")){
             RootLayoutController.displayAlert("Missing fields", "One of the fields is missing value", "Please, check if you entered valid values into all fields");
-        } else {
+        } else if (ProjectDao.searchProject(projectNameText).equals(null)) {
+            RootLayoutController.displayAlert("Error", "Existující projekt", "Zadaný projekt v databázi už existuje");
+        }
+        else {
             ProjectDao.insertProject(projectNameText);
-            
+            ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getId_Team(), ProjectDao.searchProject(projectNameText).getId_Project());
 
 //            projectsList.getItems().clear();
 //            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
