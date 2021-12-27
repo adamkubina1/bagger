@@ -4,6 +4,7 @@ import cz.vse.bagger.Models.Login_Credentials;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class Login_CredentialsDAO {
     //select, update
@@ -13,9 +14,22 @@ public class Login_CredentialsDAO {
         try {
             ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(selectStmt);
             Login_Credentials login_credentials = getLoginCredentialsFromResultSet(resultLoginCredentials);
+
             return login_credentials;
         } catch (SQLException exception) {
             System.out.println("While searching an Login_Credentials with " + Id_Login_Credentials + " id, an error occurred: " + exception);
+            throw exception;
+        }
+    }
+
+    public static Login_Credentials login(String username, String password) throws SQLException, ClassNotFoundException {
+        String validate = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials WHERE Login_Credentials.Login_Name = \"" + username + "\" AND Login_Credentials.Password = \"" + password + "\"";
+        try {
+            ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(validate);
+            Login_Credentials login_credentials = getLoginCredentialsFromResultSet(resultLoginCredentials);
+            return login_credentials;
+        } catch (SQLException exception) {
+            System.out.println("While searching an Login_Credentials with an error occurred: " + exception);
             throw exception;
         }
     }
