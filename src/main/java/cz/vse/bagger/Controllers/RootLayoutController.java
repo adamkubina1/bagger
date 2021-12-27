@@ -28,4 +28,13 @@ public class RootLayoutController {
         alert.showAndWait();
     }
 
+    public static Alert giveConfirmation(String title, String header, String description){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(description);
+
+        return alert;
+    }
 }

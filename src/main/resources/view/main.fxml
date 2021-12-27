@@ -262,7 +262,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="closeIssue" mnemonicParsing="false" text="Close issue">
+                        <Button fx:id="closeIssue" onMouseClicked="#closeIssue" mnemonicParsing="false" text="Close issue">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
