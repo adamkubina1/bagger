@@ -48,13 +48,9 @@ public class Login_CredentialsDAO {
 
  public static void updateLoginCredentialsPassword (int Id_Login_Credentials, String Password) throws SQLException, ClassNotFoundException {
      String updateStmt =
-     "BEGIN\n" +
      "   UPDATE Login_Credentials\n" +
      "      SET Password = '" + Password + "'\n" +
-     "    WHERE Id_Login_Credentials = " + Id_Login_Credentials + ";\n" +
-     "   COMMIT;\n" +
-     "END;";
-
+     "    WHERE Id_Login_Credentials = " + Id_Login_Credentials + ";";
     try {
         DBUtil.dbExecuteUpdate(updateStmt);
     }
