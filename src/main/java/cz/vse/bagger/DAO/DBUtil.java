@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtil {
-    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-
     private static Connection connection = null;
 
     private static final String connectionString = "jdbc:mysql://localhost:3306/Bagger_test";
