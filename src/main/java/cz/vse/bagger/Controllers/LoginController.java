@@ -50,7 +50,7 @@ public class LoginController{
     }
 
     private void succesfullLogin(Login_Credentials validLoginCredentials) throws SQLException, ClassNotFoundException {
-        Employee loggedEmployee = EmployeeDao.searchEmployee(String.valueOf(validLoginCredentials.getId_Login_Credentials()));
+        Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getId_Login_Credentials());
         RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this
 
         try {

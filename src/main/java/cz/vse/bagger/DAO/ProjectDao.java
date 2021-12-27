@@ -44,7 +44,7 @@ public class ProjectDao {
         }
     }
 
-    public static ObservableList<Project> searchProjects (String teamID) throws SQLException, ClassNotFoundException {
+    public static ObservableList<Project> searchProjects (int teamID) throws SQLException, ClassNotFoundException {
         String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project inner join Team_Project_Relationship on Project.Id_Project = Team_Project_Relationship.Id_Project where Project.Id_Project =" + teamID;
 
         try {

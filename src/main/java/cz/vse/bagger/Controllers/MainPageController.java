@@ -43,7 +43,7 @@ public class MainPageController {
         userLabel.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
         teamLabel.setText(RootLayoutController.loggedEmployeeTeam.getTeam_Name());
 
-        projects.getItems().addAll(ProjectDao.searchProjects(String.valueOf(RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
 
     }
 
