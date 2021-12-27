@@ -103,7 +103,7 @@
                               <Insets top="30.0" />
                            </padding>
                         </HBox>
-                        <ListView fx:id="projects" prefHeight="200.0" prefWidth="365.0" />
+                        <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="200.0" prefWidth="365.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
                               <Button mnemonicParsing="false" text="New project">
@@ -241,7 +241,7 @@
                               <Insets top="30.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
+                        <TextField fx:id="issueName" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
                         <Label text="Priority">
                            <font>
                               <Font size="24.0" />
@@ -250,13 +250,13 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
+                        <TextField fx:id="issuePriority" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
                         <Label text="Description">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="360.0" />
+                        <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="360.0" />
                         <Button mnemonicParsing="false" text="Edit issue">
                            <VBox.margin>
                               <Insets top="10.0" />
