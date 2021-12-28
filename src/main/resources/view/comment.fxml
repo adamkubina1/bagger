@@ -28,11 +28,8 @@
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <children>
             <Label styleClass="labelText" text="Message" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
             </Label>
-            <TextArea fx:id="message" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="500.0" />
+            <TextArea fx:id="message" styleClass="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="500.0" />
          </children>
       </VBox>
       <Button fx:id="sendButton" styleClass="submitButton" onMouseClicked="#sendMessage" alignment="CENTER" mnemonicParsing="false" text="Add comment" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
