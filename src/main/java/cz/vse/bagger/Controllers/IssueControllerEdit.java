@@ -19,7 +19,7 @@ public class IssueControllerEdit {
     @FXML TextField issuePriority;
     @FXML TextArea issueDescription;
     @FXML Button issueEdit;
-    Issue wholeIssue;
+    private Issue wholeIssue;
 
     private MainPageController mainPageController;
 
@@ -38,6 +38,21 @@ public class IssueControllerEdit {
         Date pom3 = pom.parse(String.valueOf(yy));
         Long result2 = Long.valueOf(pom.format(pom3));
         java.sql.Date endDate = new java.sql.Date(result2);
+
+        try {
+            Integer.parseInt(issuePriority.getText());
+        } catch(NumberFormatException e){
+            RootLayoutController.displayAlert("Wrong field format", "Priority must be numeric", "Field priority must be a number between 1 and 5.");
+            return;
+        }
+        if ( Integer.parseInt(issuePriority.getText()) < 1 || Integer.parseInt(issuePriority.getText()) > 5 ){
+            RootLayoutController.displayAlert("Wrong field format", "Priority must be numeric", "Field priority must be a number between 1 and 5.");
+            return;
+        }
+        if (issue.getText().equals("") || issue.getText().trim().isEmpty() ){
+            RootLayoutController.displayAlert("Wrong field format", "Name field must be filled", "Every issue must have a not empty name.");
+            return;
+        }
 
         IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),wholeIssue.getId_Closer(),issue.getText(),issueDescription.getText(),startDate,endDate,Integer.parseInt(issuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
