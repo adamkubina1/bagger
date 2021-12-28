@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="350.0" styleClass="container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.LoginController">
    <bottom>
       <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickLogin" prefHeight="40.0" prefWidth="200.0" styleClass="submitButton" text="Login" BorderPane.alignment="CENTER">
@@ -27,11 +28,11 @@
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="200.0" prefHeight="142.0" prefWidth="400.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <TextField fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Username" styleClass="inputField" />
-            <TextField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Password" styleClass="inputField">
+            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Password" styleClass="inputField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
-            </TextField>
+            </PasswordField>
          </children>
       </VBox>
    </center>
