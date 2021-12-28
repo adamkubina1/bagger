@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
+
 
 public class IssueController {
     @FXML TextField newIssue;
@@ -17,7 +17,6 @@ public class IssueController {
     @FXML TextArea newIssueDescription;
     @FXML Button newIssueButton;
     int Id_Project;
-
 
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         long millis=System.currentTimeMillis();
@@ -33,4 +32,6 @@ public class IssueController {
     public void getId_Project(int Id_Project) {
         this.Id_Project = Id_Project;
     }
+
+
 }

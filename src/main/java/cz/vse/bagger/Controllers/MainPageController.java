@@ -148,9 +148,15 @@ public class MainPageController {
 
 
     public void editIssue(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/editIssue.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/editIssue.fxml"));
+        Parent root = loader.load();
+
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+
+        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+        IssueControllerEdit issueControllerEdit = loader.getController();
+        issueControllerEdit.getIssue(selectedIssue);
 
         primaryStage.setScene(scene);
         primaryStage.show();
