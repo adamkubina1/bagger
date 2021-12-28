@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="cz.vse.bagger.Controllers.CommentController">
+<?import java.net.URL?>
+<GridPane styleClass="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="cz.vse.bagger.Controllers.CommentController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -19,7 +20,7 @@
     <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="New comment" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label styleClass="windowLabelText" text="New comment" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -36,4 +37,7 @@
       </VBox>
       <Button fx:id="sendButton" onMouseClicked="#sendMessage" alignment="CENTER" mnemonicParsing="false" text="Add comment" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
    </children>
+    <stylesheets>
+        <URL value="@../style/main.css" />
+    </stylesheets>
 </GridPane>

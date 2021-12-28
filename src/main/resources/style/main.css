@@ -28,6 +28,11 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
+.windowLabelText{
+    -fx-text-fill: #F9FAF4;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
 
 
 
@@ -83,22 +88,8 @@
     -fx-border-radius: 50px;
 }
 
-/*ToDO add styles to listViews*/
+
 .listView {
     -fx-background-color: #F9FAF4;
 }
-.list-view .list-cell:hover {
 
-}
-
-.list-view .list-cell:selected {
-
-}
-
-.list-view .list-cell {
-
-}
-
-.list-view .label {
-
-}

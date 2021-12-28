@@ -95,7 +95,7 @@
                               <Insets top="38.0" />
                            </VBox.margin>
                         </Label>
-                        <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="197.0" prefWidth="373.0" />
+                        <ListView fx:id="projects" styleClass="listView" onMouseClicked="#selectedProject" prefHeight="197.0" prefWidth="373.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
                               <Button fx:id="newProject" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newProject" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New project">
@@ -131,7 +131,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="245.0" prefWidth="373.0" />
+                        <ListView fx:id="issues" styleClass="listView" onMouseClicked="#selectedIssue" prefHeight="245.0" prefWidth="373.0" />
                         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="373.0">
                            <children>
                               <Button fx:id="newIssue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newIssue" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New issue">
@@ -176,7 +176,7 @@
                               <Insets top="27.0" />
                            </VBox.margin>
                         </Label>
-                        <ListView fx:id="comments" prefHeight="619.0" prefWidth="383.0" />
+                        <ListView fx:id="comments" styleClass="listView" prefHeight="619.0" prefWidth="383.0" />
                         <Button fx:id="newComment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newComment" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New comment">
                            <VBox.margin>
                               <Insets top="10.0" />
