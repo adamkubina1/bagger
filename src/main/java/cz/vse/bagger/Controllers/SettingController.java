@@ -44,6 +44,9 @@ public class SettingController {
         else if (!new_Password.getText().equals(confirm_New_Password.getText())) {
             RootLayoutController.displayAlert("Nesprávné heslo", "Hesla se neshodují", "Nové heslo není shodné z potvrzením nového hesla");
         }
+        else if (new_Password.getText().trim().isEmpty()){
+            RootLayoutController.displayAlert("Nespravne heslo", "Prazdne heslo", "Heslo musi obsahovat nejake znaky.");
+        }
         else {
             Login_CredentialsDAO.updateLoginCredentialsPassword(login_credentials.getId_Login_Credentials(), new_Password.getText());
             RootLayoutController.displayConfirmation("Úspěch", "Heslo změněno", "Úspěšně jsi si změnil heslo na nové!");
