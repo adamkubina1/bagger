@@ -21,16 +21,12 @@ public class ProjectController {
     private MainPageController mainPageController;
 
     @FXML TextField projectName;
-    @FXML TextArea projectDescription;
     @FXML ListView<Project> projectsList;
     @FXML Button addMyTeam;
     /**
      *  Tato metoda slouží k tomu aby načetla všechny projekty které nejsou v uživatelově týmu do listu
      */
     public void initialize() throws SQLException, ClassNotFoundException {
-        projectDescription.setEditable(false); //Project description is not implemented yet
-        addMyTeam.setDisable(false);
-
         projectsList.getItems().clear();
         projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
     }
