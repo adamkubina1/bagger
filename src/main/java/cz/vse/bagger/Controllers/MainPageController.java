@@ -144,6 +144,7 @@ public class MainPageController {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         CommentController commentController = loader.getController();
         commentController.transferIssueId(selectedIssue.getId_Issue());
+        commentController.transferController(this);
 
         primaryStage.setScene(scene);
         primaryStage.show();
