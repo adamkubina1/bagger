@@ -12,7 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.ProjectController">
+<?import java.net.URL?>
+<GridPane styleClass="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.ProjectController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,30 +24,21 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label text="Create new project">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <Label styleClass="windowLabelText" text="Create new project">
             </Label>
-            <Label text="Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Label styleClass="labelText" text="Name">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="projectName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
-            <Label text="Description">
+            <TextField fx:id="projectName" styleClass="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="300.0" />
+            <Label text="Description" styleClass="labelText">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
             </Label>
-            <TextArea fx:id="projectDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" />
-            <Button mnemonicParsing="false" onMouseClicked="#createProject" text="Create project">
+            <TextArea fx:id="projectDescription" styleClass="inputField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" />
+            <Button mnemonicParsing="false" styleClass="submitButton" onMouseClicked="#createProject" text="Create project">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -55,21 +47,15 @@
       </VBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
          <children>
-            <Label text="Add my team to existing project">
-               <font>
-                  <Font size="24.0" />
-               </font>
+            <Label styleClass="windowLabelText" text="Add my team to existing project">
             </Label>
-            <Label text="Pick project">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <Label styleClass="labelText" text="Pick project">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="projectsList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="300.0" />
-            <Button fx:id="addMyTeam" mnemonicParsing="false" onMouseClicked="#addMyTeamToProject" text="Add my team">
+            <ListView fx:id="projectsList" styleClass="listView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="300.0" />
+            <Button fx:id="addMyTeam" styleClass="editButton" mnemonicParsing="false" onMouseClicked="#addMyTeamToProject" text="Add my team">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -77,4 +63,7 @@
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@../style/main.css" />
+   </stylesheets>
 </GridPane>
