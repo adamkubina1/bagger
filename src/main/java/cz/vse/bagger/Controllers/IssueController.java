@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu newIssue
+ */
 public class IssueController {
     @FXML TextField newIssue;
     @FXML TextField newIssuePriority;
@@ -19,7 +21,12 @@ public class IssueController {
 
     private int Id_Project;
     private MainPageController mainPageController;
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohl přidat nový issue.
+     *  Obsahuje try catch blok kódu pro validaci formátu.
+     *  Volá metodu z insertIssue kterou zapíše nový issue do databáze.
+     *  A reloadne issues tak aby se z databáze načetl seznam i s novým záznamem.
+     */
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         long millis=System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
@@ -47,11 +54,19 @@ public class IssueController {
         Stage stage = (Stage) newIssueButton.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohlo předat IdProject z jednoho Controlleru do druhého
+     *
+     *  @param Id_Project skrz tento parameter se předává id projektu z MainPageControlleru do CommentControlleru
+     */
     public void getId_Project(int Id_Project) {
         this.Id_Project = Id_Project;
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
+     *
+     *  @param mainPageController skrz tento parameter se předává instance mainPageControlleru
+     */
     public void transferController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }

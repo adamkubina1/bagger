@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu settings
+ */
 public class SettingController {
     @FXML TextField user_Info;
     @FXML TextField team_Leader;
@@ -22,7 +24,9 @@ public class SettingController {
     @FXML TextField confirm_New_Password;
     @FXML ListView<String> team_Members;
     List<Employee> team_Employees = new ArrayList<>();
-
+    /**
+     *  Tato metoda nastaví uživatelovi informace do textfieldů jako jeho jméno, je kolegy jeho teamleadera
+     */
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
         user_Info.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
@@ -35,7 +39,9 @@ public class SettingController {
         }
         team_Members.getItems().addAll(pom);
     }
-
+    /**
+     *  Tato metoda slouží pro změnění hesla a vyhodí chybu když zadáte původní heslo špatně nebo nové heslo nebude 2x stejné
+     */
     public void changePassword() throws SQLException, ClassNotFoundException {
         Login_Credentials login_credentials = Login_CredentialsDAO.searchLoginCredentials(RootLayoutController.loggedEmployee.getId_Login_Credentials());
         if (!old_Password.getText().equals(login_credentials.getPassword())) {

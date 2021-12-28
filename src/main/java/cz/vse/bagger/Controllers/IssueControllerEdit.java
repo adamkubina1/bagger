@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu editIssue
+ */
 public class IssueControllerEdit {
     @FXML TextField issue;
     @FXML TextField issuePriority;
@@ -22,11 +24,20 @@ public class IssueControllerEdit {
     private Issue wholeIssue;
 
     private MainPageController mainPageController;
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohlo předat issue z jednoho Controlleru do druhého
+     *
+     *  @param issue skrz tento parameter se předává původní issue na který uživatel vybral z MainPageControlleru do CommentControlleru
+     */
     public void getIssue(Issue issue) {
         this.wholeIssue = issue;
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohl upravit issue.
+     *  Obsahuje try catch blok kódu pro validaci formátu.
+     *  Volá metodu z insertIssue kterou zapíše update issue do databáze.
+     *  A reloadne issues tak aby se z databáze načetl seznam i s upraveným záznamem.
+     */
     public void issueEdit(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException, ParseException {
         SimpleDateFormat pom = new SimpleDateFormat("yyyyMMdd");
         Date xx = wholeIssue.getStart_Date();
@@ -56,13 +67,20 @@ public class IssueControllerEdit {
         Stage stage = (Stage) issueEdit.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     *  Tato metoda slouží k načtení dat z originálního issue do jednotlivých text fieldů v edit okně
+     *
+     */
     public void loadData() {
         issue.setText(wholeIssue.getIssue_Title());
         issuePriority.setText(String.valueOf(wholeIssue.getImportance()));
         issueDescription.setText(wholeIssue.getIssue_Description());
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
+     *
+     *  @param mainPageController skrz tento parameter se předává instance mainPageControlleru
+     */
     public void transferController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }

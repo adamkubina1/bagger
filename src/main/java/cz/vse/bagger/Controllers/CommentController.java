@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu comment
+ */
 public class CommentController {
 
     @FXML TextArea message;
@@ -19,13 +21,26 @@ public class CommentController {
     private MainPageController mainPageController;
     private int id_Issue;
 
+    /**
+     *  Tato metoda slouží k tomu aby se mohlo předat IdIssue z jednoho Controlleru do druhého
+     *
+     *  @param id_Issue skrz tento parameter se předává id chyby z MainPageControlleru do CommentControlleru
+     */
     public void transferIssueId(int id_Issue) {
         this.id_Issue = id_Issue;
     }
+    /**
+     *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do commentControlleru
+     *
+     *  @param mainPageController skrz tento parameter se předává instance mainPageControlleru
+     */
     public void transferController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se vložil nový komentář do databáze a reloadne komentáře aby se změna načetla.
+     *
+     */
     public void sendMessage() throws SQLException, ClassNotFoundException {
         CommentDao.insertComment(RootLayoutController.loggedEmployee.getId_Employee(),id_Issue, message.getText());
 

@@ -13,7 +13,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Objects;
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu newProject
+ */
 public class ProjectController {
 
     private MainPageController mainPageController;
@@ -22,7 +24,9 @@ public class ProjectController {
     @FXML TextArea projectDescription;
     @FXML ListView<Project> projectsList;
     @FXML Button addMyTeam;
-
+    /**
+     *  Tato metoda slouží k tomu aby načetla všechny projekty které nejsou v uživatelově týmu do listu
+     */
     public void initialize() throws SQLException, ClassNotFoundException {
         projectDescription.setEditable(false); //Project description is not implemented yet
         addMyTeam.setDisable(false);
@@ -30,12 +34,18 @@ public class ProjectController {
         projectsList.getItems().clear();
         projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
+     *
+     *  @param mainPageController skrz tento parameter se předává instance mainPageControlleru
+     */
     public void transferController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
 
-
+    /**
+     *  Tato metoda slouží pro vytvoření projektu tak, že si vezme z textFieldu jméno projektu a pak zavolá funkci
+     */
     public void createProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         String projectNameText = projectName.getText();
         Project project = ProjectDao.searchProject(projectNameText);
@@ -56,7 +66,9 @@ public class ProjectController {
             stage.close();
         }
     }
-
+    /**
+     *  Tato metoda slouží pro přidání záznamu do M:N tabulky mezi Project a Team tak abychom mohli přidat ke svému týmu další projekt
+     */
     public void addMyTeamToProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Project selectedProject = projectsList.getSelectionModel().getSelectedItem();
 
