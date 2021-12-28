@@ -13,7 +13,9 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu settings
+ */
 public class SettingController {
     @FXML TextField user_Info;
     @FXML TextField team_Leader;

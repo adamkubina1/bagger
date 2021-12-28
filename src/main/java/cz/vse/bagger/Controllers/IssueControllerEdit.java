@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu editIssue
+ */
 public class IssueControllerEdit {
     @FXML TextField issue;
     @FXML TextField issuePriority;

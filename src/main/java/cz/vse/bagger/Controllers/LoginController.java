@@ -16,7 +16,9 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.util.Objects;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu login
+ */
 public class LoginController{
     @FXML private TextField username;
     @FXML private TextField password;

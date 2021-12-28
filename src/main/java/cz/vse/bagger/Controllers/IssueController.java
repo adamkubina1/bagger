@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu newIssue
+ */
 public class IssueController {
     @FXML TextField newIssue;
     @FXML TextField newIssuePriority;

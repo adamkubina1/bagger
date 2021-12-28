@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu comment
+ */
 public class CommentController {
 
     @FXML TextArea message;

@@ -22,7 +22,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 
-
+/**
+ *  Tato třída slouží jako ovládací kontroler k fxml oknu main
+ */
 public class MainPageController {
     public ImageView deleteProject;
     @FXML Label userLabel;
