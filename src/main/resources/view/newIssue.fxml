@@ -34,7 +34,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="newIssue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="400.0" />
+            <TextField fx:id="newIssue" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="400.0" />
             <Label styleClass="labelText" text="Message" textAlignment="CENTER">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -44,7 +44,7 @@
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Label>
-            <TextField fx:id="newIssuePriority" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="400.0" />
+            <TextField fx:id="newIssuePriority" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="400.0" />
          </children>
       </VBox>
       <Button fx:id="newIssueButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#addNewIssue" styleClass="submitButton" text="Create issue" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
