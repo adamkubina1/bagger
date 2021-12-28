@@ -51,9 +51,10 @@ public class IssueControllerEdit {
 
         IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
+
+        mainPageController.reload();
         Stage stage = (Stage) issueEdit.getScene().getWindow();
         stage.close();
-        mainPageController.reload();
     }
 
     public void loadData() {
