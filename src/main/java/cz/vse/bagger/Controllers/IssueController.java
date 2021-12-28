@@ -16,16 +16,33 @@ public class IssueController {
     @FXML TextField newIssuePriority;
     @FXML TextArea newIssueDescription;
     @FXML Button newIssueButton;
-    int Id_Project;
 
+    private int Id_Project;
     private MainPageController mainPageController;
 
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         long millis=System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
-        int newIssuePriorityInt = Integer.parseInt(newIssuePriority.getText());
         java.sql.Date endDate = new java.sql.Date(00);//FUCKING HEELLLL
-        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date,endDate, newIssuePriorityInt);//FUCKING HELLL  OTVIRAME ZAVIRAME ROVKOUUUUUUUUUUUU
+
+
+        try {
+            Integer.parseInt(newIssuePriority.getText());
+        } catch(NumberFormatException e){
+            RootLayoutController.displayAlert("Wrong field format", "Priority must be numeric", "Field priority must be a number between 1 and 5.");
+            return;
+        }
+        if ( Integer.parseInt(newIssuePriority.getText()) < 1 || Integer.parseInt(newIssuePriority.getText()) > 5 ){
+            RootLayoutController.displayAlert("Wrong field format", "Priority must be numeric", "Field priority must be a number between 1 and 5.");
+            return;
+        }
+        if (newIssue.getText().equals("") || newIssue.getText().trim().isEmpty()){
+            RootLayoutController.displayAlert("Wrong field format", "Name field must be filled", "Every issue must have a not empty name and priority.");
+            return;
+        }
+
+
+        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date,endDate, Integer.parseInt(newIssuePriority.getText()));//FUCKING HELLL  OTVIRAME ZAVIRAME ROVKOUUUUUUUUUUUU
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
         Stage stage = (Stage) newIssueButton.getScene().getWindow();
         stage.close();
