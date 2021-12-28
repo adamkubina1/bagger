@@ -107,13 +107,13 @@ public class IssueDao {
         String updateStmt =
                         "   UPDATE Issue\n" +
                         "      SET Id_Project = '" + Id_Project + "'\n" +
-                        "      SET Id_Creater = '" + Id_Creater + "'\n" +
-                        "      SET Id_Closer = '" + Id_Closer + "'\n" +
-                        "      SET Issue_Title = '" + Issue_Title + "'\n" +
-                        "      SET Issue_Description = '" + Issue_Description + "'\n" +
-                        "      SET Start_Date = '" + Start_Date + "'\n" +
-                        "      SET End_Date = '" + End_Date + "'\n" +
-                        "      SET Importance = '" + Importance + "'\n" +
+                        "      , Id_Creater = '" + Id_Creater + "'\n" +
+                        "      , Id_Closer = '" + Id_Closer + "'\n" +
+                        "      , Issue_Title = '" + Issue_Title + "'\n" +
+                        "      , Issue_Description = '" + Issue_Description + "'\n" +
+                        "      , Start_Date = '" + Start_Date + "'\n" +
+                        "      , End_Date = '" + End_Date + "'\n" +
+                        "      , Importance = '" + Importance + "'\n" +
                         "    WHERE Id_Issue = " + Id_Issue + ";";
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
@@ -124,12 +124,12 @@ public class IssueDao {
         }
     }
 
-    public static void insertIssue (int Id_Issue, int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
+    public static void insertIssue (int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "INSERT INTO Issue\n" +
                         "(Id_Project, Id_Creater, Id_Closer, Issue_Title, Issue_Description, Start_Date, End_Date, Importance)\n" +
                         "VALUES\n" +
-                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Id_Closer+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+End_Date+"', '"+Importance+"',);";
+                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Id_Closer+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+End_Date+"', '"+Importance+"');";
 
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
