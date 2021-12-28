@@ -18,6 +18,8 @@ public class IssueController {
     @FXML Button newIssueButton;
     int Id_Project;
 
+    private MainPageController mainPageController;
+
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         long millis=System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
@@ -27,10 +29,15 @@ public class IssueController {
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
         Stage stage = (Stage) newIssueButton.getScene().getWindow();
         stage.close();
+        mainPageController.reload();
     }
 
     public void getId_Project(int Id_Project) {
         this.Id_Project = Id_Project;
+    }
+
+    public void transferController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
     }
 
 

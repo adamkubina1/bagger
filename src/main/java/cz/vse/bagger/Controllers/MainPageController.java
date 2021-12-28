@@ -126,6 +126,7 @@ public class MainPageController {
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
         IssueController issueController = loader.getController();
         issueController.getId_Project(selectedProject.getId_Project());
+        issueController.transferController(this);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -158,6 +159,7 @@ public class MainPageController {
         IssueControllerEdit issueControllerEdit = loader.getController();
         issueControllerEdit.getIssue(selectedIssue);
         issueControllerEdit.loadData();
+        issueControllerEdit.transferController(this);
 
         primaryStage.setScene(scene);
         primaryStage.show();

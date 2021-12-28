@@ -21,6 +21,8 @@ public class IssueControllerEdit {
     @FXML Button issueEdit;
     Issue wholeIssue;
 
+    private MainPageController mainPageController;
+
     public void getIssue(Issue issue) {
         this.wholeIssue = issue;
     }
@@ -41,11 +43,16 @@ public class IssueControllerEdit {
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
         Stage stage = (Stage) issueEdit.getScene().getWindow();
         stage.close();
+        mainPageController.reload();
     }
 
     public void loadData() {
         issue.setText(wholeIssue.getIssue_Title());
         issuePriority.setText(String.valueOf(wholeIssue.getImportance()));
         issueDescription.setText(wholeIssue.getIssue_Description());
+    }
+
+    public void transferController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
     }
 }
