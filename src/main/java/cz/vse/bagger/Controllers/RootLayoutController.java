@@ -7,7 +7,9 @@ import javafx.scene.control.Alert;
 public class RootLayoutController {
     public static Employee loggedEmployee; // Realy unsafe way of doing this
     public static Team loggedEmployeeTeam;
-
+    /**
+     *  Tato metoda slouží zobrazení alertu, že jsme třeba špatně vyplnily heslo atd...
+     */
     public static void displayAlert(String title, String header, String description){
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -17,9 +19,11 @@ public class RootLayoutController {
 
         alert.showAndWait();
     }
-
+    /**
+     *  Tato metoda slouží zobrazení alertu, že se něco stalo jako uložení atd...
+     */
     public static void displayConfirmation(String title, String header, String description){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -27,7 +31,9 @@ public class RootLayoutController {
 
         alert.showAndWait();
     }
-
+    /**
+     *  Tato metoda slouží pro dotázaní jestli nějakou akci opravdu chcete udělat
+     */
     public static Alert giveConfirmation(String title, String header, String description){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 

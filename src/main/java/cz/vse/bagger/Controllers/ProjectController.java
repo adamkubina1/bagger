@@ -22,7 +22,9 @@ public class ProjectController {
     @FXML TextArea projectDescription;
     @FXML ListView<Project> projectsList;
     @FXML Button addMyTeam;
-
+    /**
+     *  Tato metoda slouží k tomu aby načetla všechny projekty které nejsou v uživatelově týmu do listu
+     */
     public void initialize() throws SQLException, ClassNotFoundException {
         projectDescription.setEditable(false); //Project description is not implemented yet
         addMyTeam.setDisable(false);
@@ -62,7 +64,9 @@ public class ProjectController {
             stage.close();
         }
     }
-
+    /**
+     *  Tato metoda slouží pro přidání záznamu do M:N tabulky mezi Project a Team tak abychom mohli přidat ke svému týmu další projekt
+     */
     public void addMyTeamToProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Project selectedProject = projectsList.getSelectionModel().getSelectedItem();
 
