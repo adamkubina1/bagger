@@ -1,16 +1,45 @@
 
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+
+
+/*Text styles*/
+* {
+    -fx-font-family: 'Roboto', sans-serif;
+}
+
+.loginHeader{
+    -fx-text-fill: #FFC000;
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+}
+
+
+
+
+/*Component styles*/
 .submitButton{
     -fx-background-color: #5294E2;
-    -fx-color: #FFC000;
 
-    -fx-hgap: 20px;
-    -fx-padding: 40px;
+    -fx-text-fill: #FFC000;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+
 
     -fx-background-radius: 50px;
-
     -fx-border-radius: 50px;
     -fx-border-width: 1px;
     -fx-border-color: black;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
+
+.container{
+    -fx-background-color: #383C4A;
+}
+
+.inputField{
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+}
+
