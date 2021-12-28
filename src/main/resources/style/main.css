@@ -19,23 +19,57 @@
     -fx-font-size: 16px;
 }
 
+.mainInfoText {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+}
+.labelText {
+    -fx-text-fill: #5294E2;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
 
 
 
 /*Component styles*/
-.submitButton{
+.submitButton {
     -fx-background-color: #5294E2;
 
     -fx-text-fill: #FFC000;
-    -fx-font-weight: bold;
-    -fx-font-size: 18px;
+    -fx-font-size: 16px;
 
 
     -fx-background-radius: 50px;
     -fx-border-radius: 50px;
-    -fx-border-width: 1px;
-    -fx-border-color: black;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.editButton {
+    -fx-background-color: #93CBCC;
+
+    -fx-text-fill: #36454F;
+    -fx-font-size: 16px;
+
+
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+}
+
+.removeButton {
+    -fx-background-color: #F28500;
+
+    -fx-text-fill: #F9FAF4;
+    -fx-font-size: 16px;
+
+
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+}
+.submitButton:hover, .editButton:hover, .removeButton:hover {
+    -fx-background-color: #79C753;
+}
+.submitButton:pressed, .editButton:pressed, .removeButton:pressed{
+    -fx-background-color: #DD4132;
 }
 
 .container{
@@ -49,3 +83,22 @@
     -fx-border-radius: 50px;
 }
 
+/*ToDO add styles to listViews*/
+.listView {
+    -fx-background-color: #F9FAF4;
+}
+.list-view .list-cell:hover {
+
+}
+
+.list-view .list-cell:selected {
+
+}
+
+.list-view .list-cell {
+
+}
+
+.list-view .label {
+
+}
