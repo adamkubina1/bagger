@@ -15,14 +15,22 @@ public class CommentController {
 
     @FXML TextArea message;
     @FXML Button sendButton;
-    int id_Issue;
+
+    private MainPageController mainPageController;
+    private int id_Issue;
 
     public void transferIssueId(int id_Issue) {
         this.id_Issue = id_Issue;
     }
+    public void transferController(MainPageController mainPageController) {
+        this.mainPageController = mainPageController;
+    }
 
     public void sendMessage() throws SQLException, ClassNotFoundException {
         CommentDao.insertComment(RootLayoutController.loggedEmployee.getId_Employee(),id_Issue, message.getText());
+
+        mainPageController.reload();
+
         Stage stage = (Stage) sendButton.getScene().getWindow();
         stage.close();
     }
