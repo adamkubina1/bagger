@@ -30,7 +30,7 @@
 }
 .windowLabelText{
     -fx-text-fill: #F9FAF4;
-    -fx-font-size: 22px;
+    -fx-font-size: 21px;
     -fx-font-weight: bold;
 }
 
@@ -83,9 +83,6 @@
 
 .inputField{
     -fx-background-color: #F9FAF4;
-
-    -fx-background-radius: 50px;
-    -fx-border-radius: 50px;
 }
 
 
