@@ -208,6 +208,13 @@ public class MainPageController {
         closeIssue.setDisable(true);
     }
 
+    public void reloadComments() throws SQLException, ClassNotFoundException {
+        Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
+        comments.getItems().clear();
+
+        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
+    }
+
     public void closeIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Alert conformation = RootLayoutController.giveConfirmation("Close issue", "Permanent issue removal", "You are about to permanently remove this issue, are you sure?");
 
