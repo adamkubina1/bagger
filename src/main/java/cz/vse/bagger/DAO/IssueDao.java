@@ -107,13 +107,13 @@ public class IssueDao {
         String updateStmt =
                         "   UPDATE Issue\n" +
                         "      SET Id_Project = '" + Id_Project + "'\n" +
-                        "      SET Id_Creater = '" + Id_Creater + "'\n" +
-                        "      SET Id_Closer = '" + Id_Closer + "'\n" +
-                        "      SET Issue_Title = '" + Issue_Title + "'\n" +
-                        "      SET Issue_Description = '" + Issue_Description + "'\n" +
-                        "      SET Start_Date = '" + Start_Date + "'\n" +
-                        "      SET End_Date = '" + End_Date + "'\n" +
-                        "      SET Importance = '" + Importance + "'\n" +
+                        "      , Id_Creater = '" + Id_Creater + "'\n" +
+                        "      , Id_Closer = '" + Id_Closer + "'\n" +
+                        "      , Issue_Title = '" + Issue_Title + "'\n" +
+                        "      , Issue_Description = '" + Issue_Description + "'\n" +
+                        "      , Start_Date = '" + Start_Date + "'\n" +
+                        "      , End_Date = '" + End_Date + "'\n" +
+                        "      , Importance = '" + Importance + "'\n" +
                         "    WHERE Id_Issue = " + Id_Issue + ";";
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
