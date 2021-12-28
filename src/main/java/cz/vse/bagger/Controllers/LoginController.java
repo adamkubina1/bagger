@@ -23,7 +23,9 @@ public class LoginController{
     @FXML private Button loginButton;
 
 
-
+    /**
+     *  Tato metoda slouží k validaci při přihlášení a přímo reaguje na kliknutí tlačítka login.
+     */
     public void clickLogin(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         String usernameText = username.getText();
         String passwordText = password.getText();
@@ -48,7 +50,9 @@ public class LoginController{
             }
         }
     }
-
+    /**
+     *  Tato metoda slouží k otevření hlavního okna po úspěšném příhlášení a také uloží údaje o uživateli do statických proměných.
+     */
     private void succesfullLogin(Login_Credentials validLoginCredentials) throws SQLException, ClassNotFoundException {
         Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getId_Login_Credentials());
         RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this

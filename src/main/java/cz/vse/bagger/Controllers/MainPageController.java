@@ -39,7 +39,11 @@ public class MainPageController {
     @FXML Button editIssue;
     @FXML Button closeIssue;
 
-
+    /**
+     *  Tato metoda slouží k načtení dat o uživateli když se inicializuje hlavní okno.
+     *  Načítá také všechny projekty které patří k týmu uživatele.
+     *  A vypíná prvky se které potřebují další akci aby se s nimi mohlo pracovat.
+     */
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
 
@@ -61,7 +65,9 @@ public class MainPageController {
         }
     }
 
-
+    /**
+     *  Tato metoda na vybraný projekt nahraje všechny issues do Listu
+     */
     public void selectedProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
 
@@ -81,7 +87,9 @@ public class MainPageController {
         issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
     }
 
-
+    /**
+     *  Tato metoda z vybraného issue nahraje jeho jméno prioritu a popis do fxml formu a nahraje všechny k němu relevantní komentáře do listu
+     */
     public void selectedIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
 
@@ -103,7 +111,9 @@ public class MainPageController {
         issuePriority.setText(String.valueOf(selectedIssue.getImportance()));
         issueDescription.setText(selectedIssue.getIssue_Description());
     }
-
+    /**
+     *  Tato metoda otevře fxml okno pro vytvoření nového projektu a pošle do jeho controlleru vlastní instanci
+     */
     public void newProject(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newProject.fxml"));
         Parent root = loader.load();
@@ -117,7 +127,9 @@ public class MainPageController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    /**
+     *  Tato metoda otevře fxml okno pro vytvoření nového issue a pošle do jeho controlleru vlastní instanci a id projektu
+     */
     public void newIssue(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/newIssue.fxml"));
         Parent root = loader.load();
@@ -133,7 +145,9 @@ public class MainPageController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    /**
+     *  Tato metoda otevře fxml okno pro vytvoření nového komentáře a pošle do jeho controlleru vlastní instanci a issue id
+     */
     public void newComment(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/comment.fxml"));
         Parent root = loader.load();
@@ -150,7 +164,9 @@ public class MainPageController {
         primaryStage.show();
     }
 
-
+    /**
+     *  Tato metoda otevře fxml okno pro editování issue a pošle do jeho controlleru vlastní instanci a celé vybrané issue
+     */
     public void editIssue(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/editIssue.fxml"));
         Parent root = loader.load();
@@ -167,7 +183,9 @@ public class MainPageController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    /**
+     *  Tato metoda otevře fxml okno settingů
+     */
     public void openSettings(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/settings.fxml"));
         Scene scene = new Scene(root);
@@ -176,7 +194,10 @@ public class MainPageController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+    /**
+     *  Tato metoda vyčistí list projektů, chyb, komentářů, texfieldy a nahraje je znovu.
+     *  Vypne všechny prvky jelikož odoznačí vše takže si je uživatel musí zaktivovat znovu sám.
+     */
     public void reload() throws SQLException, ClassNotFoundException {
         projects.getItems().clear();
         issues.getItems().clear();
@@ -192,7 +213,10 @@ public class MainPageController {
         editIssue.setDisable(true);
         closeIssue.setDisable(true);
     }
-
+    /**
+     *  Tato metoda vyčistí list jen pro issue a jeho textfieldy a nahraje issue list znovu.
+     *  Odoznačí issue takže vypne dané ovládací prvky a uživatel si znovu musí vybrat issue
+     */
     public void reloadIssues() throws SQLException, ClassNotFoundException {
         issues.getItems().clear();
         issueName.clear();
@@ -207,14 +231,18 @@ public class MainPageController {
         editIssue.setDisable(true);
         closeIssue.setDisable(true);
     }
-
+    /**
+     *  Tato metoda vyčistí list komentářů k jednomu issue a nahraje ho znovu
+     */
     public void reloadComments() throws SQLException, ClassNotFoundException {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         comments.getItems().clear();
 
         comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
     }
-
+    /**
+     *  Tato metoda se nejdřív uživatele zeptá jestli fakt chce zavrít issue a pak zavolá metodu pro zavření daného issue
+     */
     public void closeIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Alert conformation = RootLayoutController.giveConfirmation("Close issue", "Permanent issue removal", "You are about to permanently remove this issue, are you sure?");
 
@@ -233,7 +261,9 @@ public class MainPageController {
 
         }
     }
-
+    /**
+     *  Tato metoda se nejdřív uživatele zeptá jestli fakt chce smazat projekt a pak zavolá metodu pro odstranění vybraného projektu
+     */
     public void deleteProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Alert conformation = RootLayoutController.giveConfirmation("Delete project", "Permanent permanent removal", "You are about to permanently delete this project, are you sure?");
 

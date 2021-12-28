@@ -30,12 +30,18 @@ public class ProjectController {
         projectsList.getItems().clear();
         projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
     }
-
+    /**
+     *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
+     *
+     *  @param mainPageController skrz tento parameter se předává instance mainPageControlleru
+     */
     public void transferController(MainPageController mainPageController) {
         this.mainPageController = mainPageController;
     }
 
-
+    /**
+     *  Tato metoda slouží pro vytvoření projektu tak, že si vezme z textFieldu jméno projektu a pak zavolá funkci
+     */
     public void createProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         String projectNameText = projectName.getText();
         Project project = ProjectDao.searchProject(projectNameText);
