@@ -6,31 +6,14 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ *  Tato třída slouží pro zpracování příkazů k tabulkce Project
+ */
 public class ProjectDao {
-    public static Project searchProject (int Id_Project) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Project WHERE Id_Project="+Id_Project;
-
-        try {
-            ResultSet resultProject = DBUtil.dbExecuteQuery(selectStmt);
-            Project project = getProjectFromResultSet(resultProject);
-            return project;
-        } catch (SQLException exception) {
-            System.out.println("While searching project with " + Id_Project + " id, an error occurred: " + exception);
-            throw exception;
-        }
-    }
-    private static Project getProjectFromResultSet(ResultSet resultProject) throws SQLException
-    {
-        Project project = null;
-        if (resultProject.next()) {
-            project = new Project();
-            project.setId_Project(resultProject.getInt("Id_Project"));
-            project.setProject_Name(resultProject.getString("Project_Name"));
-        }
-        return project;
-    }
-
+    /**
+     *  Tato metoda vyhledá v databázi Projekt podle jeho jména
+     *  @param Project_Name říká jméno týmu podle kterého hledáme
+     */
     public static Project searchProject (String Project_Name) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Project WHERE Project_Name="+"'"+Project_Name+"'";
 
@@ -43,6 +26,10 @@ public class ProjectDao {
             throw exception;
         }
     }
+    /**
+     *  Tato metoda zpracovává výsledek ze login searchProject a záznamy které ta metoda vrátila dává do proměnné typu Project.
+     *  @param resultProject je výsledek který vrátila databáze na naše querry.
+     */
     private static Project getProjectFromString(ResultSet resultProject) throws SQLException
     {
         Project project = null;
@@ -53,20 +40,10 @@ public class ProjectDao {
         }
         return project;
     }
-
-    public static ObservableList<Project> searchProjects () throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Projects";
-
-        try {
-            ResultSet resultProjects = DBUtil.dbExecuteQuery(selectStmt);
-            ObservableList<Project> projectList = getProjectList(resultProjects);
-            return projectList;
-        } catch (SQLException exception) {
-            System.out.println("SQL select operation has been failed: " + exception);
-            throw exception;
-        }
-    }
-
+    /**
+     *  Tato metoda vyhledá v databázi Projekt podle team Id
+     *  @param teamID říká id týmu podle kterého hledáme
+     */
     public static ObservableList<Project> searchProjects (int teamID) throws SQLException, ClassNotFoundException {
         String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project inner join Team_Project_Relationship \n" +
                 "on Project.Id_Project = Team_Project_Relationship.Id_Project \n" +
@@ -81,7 +58,10 @@ public class ProjectDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda vyhledá v databázi projekty které uživatel nemá přiřazené ke svému týmu
+     *  @param teamID říká jméno týmu ke kterému nemají být přiřazené projekty
+     */
     public static ObservableList<Project> searchNotUsedProjects (int teamID) throws SQLException, ClassNotFoundException {
         String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project join Team_Project_Relationship\n" +
                 "on Project.Id_Project = Team_Project_Relationship.Id_Project \n" +
@@ -97,7 +77,10 @@ public class ProjectDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda zpracovává výsledek ze searchProjects a searchNotUsedProjects metod záznamy které ta metoda vrátila dává do Listu.
+     *  @param resultProjects je výsledek který vrátila databáze na naše querry.
+     */
     private static ObservableList<Project> getProjectList(ResultSet resultProjects) throws SQLException, ClassNotFoundException {
         ObservableList<Project> projectList = FXCollections.observableArrayList();
         while (resultProjects.next()) {
@@ -108,21 +91,10 @@ public class ProjectDao {
         }
         return projectList;
     }
-
-    public static void updateProject (int Id_Project, String Project_Name) throws SQLException, ClassNotFoundException {
-        String updateStmt =
-                        "   UPDATE Project\n" +
-                        "      SET Project_Name = '" + Project_Name + "'\n" +
-                        "    WHERE Id_Project = " + Id_Project + ";";
-        try {
-            DBUtil.dbExecuteUpdate(updateStmt);
-        }
-        catch (SQLException exception) {
-            System.out.print("Error occurred while UPDATE Operation: " + exception);
-            throw exception;
-        }
-    }
-
+    /**
+     *  Tato metoda ukládá nový projekt a dává mu název
+     *  @param Project_Name je název nového projektu
+     */
     public static void insertProject (String Project_Name) throws SQLException, ClassNotFoundException {
         String updateStmt =
                 "INSERT INTO Project\n" +
@@ -137,7 +109,11 @@ public class ProjectDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda přiřazuje týmu projekty
+     *  @param Id_team tým kterému chceme přiřadit projekt
+     *  @param Id_project projekt který chceme přiřadit
+     */
     public static void insertTeam_projectRelationship (int Id_team, int Id_project) throws SQLException, ClassNotFoundException {
         String updateStmt =
                 "INSERT INTO Team_Project_Relationship\n" +
@@ -152,6 +128,11 @@ public class ProjectDao {
             throw exception;
         }
     }
+    /**
+     *  Tato metoda přiřazuje týmu projekty
+     *  @param Id_Project projekt který chceme přiřadit
+     *  @param Id_team tým kterému chceme přiřadit projekt
+     */
     public static void insertTeamToProject (int Id_Project, int Id_team ) throws SQLException, ClassNotFoundException {
         String updateStmt = "INSERT INTO Team_Project_Relationship (Id_Team, Id_Project) VALUES ('"+Id_team+"', '"+Id_Project+"');";
 
@@ -163,7 +144,10 @@ public class ProjectDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda maže projekt na základě jeho Id
+     *  @param Id_Project id projektu který chceme vymazat
+     */
     public static void deleteProjectWithId (int Id_Project) throws SQLException, ClassNotFoundException {
         String deleteStmt =
                         "   DELETE FROM Project\n" +

@@ -1,29 +1,20 @@
 package cz.vse.bagger.DAO;
 
 import cz.vse.bagger.Models.Issue;
-import cz.vse.bagger.Models.Project;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ *  Tato třída slouží pro zpracování příkazů k tabulkce Issue
+ */
 public class IssueDao {
-    //select, insert, update, delete
-    public static Issue searchIssue (int Id_Issue) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Issue WHERE Id_Issue="+Id_Issue;
-
-        try {
-            ResultSet resultIssue = DBUtil.dbExecuteQuery(selectStmt);
-            Issue issue = getIssueFromResultSet(resultIssue);
-            return issue;
-        } catch (SQLException exception) {
-            System.out.println("While searching issue with " + Id_Issue + " id, an error occurred: " + exception);
-            throw exception;
-        }
-    }
-
+    /**
+     *  Tato metoda vyhledá v databázi Issues patřící pod konkrétní projekt
+     *  @param Id_Project Id projektu říká pod který projekt dané issues patří
+     */
     public static ObservableList<Issue> searchIssueOnProject (int Id_Project) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Issue WHERE Id_Project="+Id_Project;
 
@@ -36,22 +27,10 @@ public class IssueDao {
             throw exception;
         }
     }
-
-
-    private static Issue getIssueFromResultSet(ResultSet resultIssue) throws SQLException {
-        Issue issue = null;
-        if (resultIssue.next()) {
-            issue = new Issue();
-            issue.setId_Issue(resultIssue.getInt("Id_Issue"));
-            issue.setId_Project(resultIssue.getInt("Id_Project"));
-            issue.setId_Creater(resultIssue.getInt("Id_Creater"));
-            issue.setIssue_Title(resultIssue.getString("Issue_Title"));
-            issue.setIssue_Description(resultIssue.getString("Issue_Description"));
-            issue.setStart_Date(resultIssue.getDate("Start_Date"));
-            issue.setImportance(resultIssue.getInt("Importance"));
-        }
-        return issue;
-    }
+    /**
+     *  Tato metoda zpracovává výsledek ze searchIssueOnProject metody a záznamy které ta metoda vrátila dává do Listu.
+     *  @param resultIssues je výsledek který vrátila databáze na naše querry.
+     */
     private static ObservableList<Issue> getIssueListFromResultSet(ResultSet resultIssues) throws SQLException, ClassNotFoundException {
         ObservableList<Issue> issuesList = FXCollections.observableArrayList();
         while (resultIssues.next()) {
@@ -67,36 +46,16 @@ public class IssueDao {
         }
         return issuesList;
     }
-
-    public static ObservableList<Issue> searchProjects (int Id_Project) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Issue where Id_Project="+Id_Project;
-
-        try {
-            ResultSet resultIssues = DBUtil.dbExecuteQuery(selectStmt);
-            ObservableList<Issue> issueList = getIssueList(resultIssues);
-            return issueList;
-        } catch (SQLException exception) {
-            System.out.println("SQL select operation has been failed: " + exception);
-            throw exception;
-        }
-    }
-
-    private static ObservableList<Issue> getIssueList(ResultSet resultIssue) throws SQLException, ClassNotFoundException {
-        ObservableList<Issue> issueList = FXCollections.observableArrayList();
-        while (resultIssue.next()) {
-            Issue issue = new Issue();
-            issue.setId_Issue(resultIssue.getInt("Id_Issue"));
-            issue.setId_Project(resultIssue.getInt("Id_Project"));
-            issue.setId_Creater(resultIssue.getInt("Id_Creater"));
-            issue.setIssue_Title(resultIssue.getString("Issue_Title"));
-            issue.setIssue_Description(resultIssue.getString("Issue_Description"));
-            issue.setStart_Date(resultIssue.getDate("Start_Date"));
-            issue.setImportance(resultIssue.getInt("Importance"));
-            issueList.add(issue);
-        }
-        return issueList;
-    }
-
+    /**
+     *  Tato metoda ukládá nový komentář do databáze.
+     *  @param Id_Issue je Id issue které chceme updatnout
+     *  @param Id_Project je Id projektu ke kterému to issue patří
+     *  @param Id_Creater Id zaměstnance který vytvořil issue
+     *  @param Issue_Title název issue
+     *  @param Issue_Description zpráva kterou ukládáme k danému issue
+     *  @param Start_Date datum vytvoření issue
+     *  @param Importance říká jak důležitý je daný issue
+     */
     public static void updateIssue (int Id_Issue, int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "   UPDATE Issue\n" +
@@ -115,7 +74,15 @@ public class IssueDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda ukládá nový issue do databáze.
+     *  @param Id_Project je Id projektu ke kterému to issue patří
+     *  @param Id_Creater Id zaměstnance který vytvořil issue
+     *  @param Issue_Title název issue
+     *  @param Issue_Description zpráva kterou ukládáme k danému issue
+     *  @param Start_Date datum vytvoření issue
+     *  @param Importance říká jak důležitý je daný issue
+     */
     public static void insertIssue (int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "INSERT INTO Issue\n" +
@@ -130,7 +97,10 @@ public class IssueDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda smaže v databázi Issue s daným Id
+     *  @param Id_Issue Id Issue které chceme vymazat
+     */
     public static void deleteIssueWithId (int Id_Issue) throws SQLException, ClassNotFoundException {
         String deleteStmt =
                         "   DELETE FROM Issue\n" +

@@ -4,8 +4,14 @@ import cz.vse.bagger.Models.Team;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ *  Tato třída slouží pro zpracování příkazů k tabulkce Team
+ */
 public class TeamDao {
+    /**
+     *  Tato metoda vyhledá v databázi Team který má dané team Id
+     *  @param Id_Team Id říká jaký tým chceme vyhledat
+     */
     public static Team searchTeam (String Id_Team) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Team WHERE Id_Team="+Id_Team;
 
@@ -18,6 +24,10 @@ public class TeamDao {
             throw exception;
         }
     }
+    /**
+     *  Tato metoda vyhledá v databázi Team podle jeho vedoucího
+     *  @param Id_Leader říká jaké id má daný leader abychom vyhledaly záznam
+     */
     public static Team searchTeamOnLeader (String Id_Leader) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Team WHERE Id_Leader="+Id_Leader;
 
@@ -30,7 +40,10 @@ public class TeamDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda zpracovává výsledek ze searchTeam a  searchTeamOnLeader metody a záznamy které ta metoda vrátila dává do proměnné typu Team.
+     *  @param resultTeam je výsledek který vrátila databáze na naše querry.
+     */
     private static Team getTeamFromResultSet(ResultSet resultTeam) throws SQLException
     {
         Team team = null;

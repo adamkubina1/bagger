@@ -6,8 +6,14 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ *  Tato třída slouží pro zpracování příkazů k tabulkce Comment
+ */
 public class CommentDao {
+    /**
+     *  Tato metoda vyhledá z databáze všechny komentáře které mají konkrétní Issue id.
+     *  @param Id_Issue Id issue říká ke kterému issue chceme vypsat komentáře.
+     */
     public static ObservableList<Comment> searchComments (int Id_Issue) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM Comment where Id_Issue="+Id_Issue;
 
@@ -20,7 +26,10 @@ public class CommentDao {
             throw exception;
         }
     }
-
+    /**
+     *  Tato metoda zpracovává výsledek ze searchComments metody a záznamy které ta metoda vrátila dává do Listu.
+     *  @param resultComments je výsledek který vrátila databáze na naše querry.
+     */
     private static ObservableList<Comment> getCommentsList(ResultSet resultComments) throws SQLException, ClassNotFoundException {
         ObservableList<Comment> commentList = FXCollections.observableArrayList();
 
@@ -34,7 +43,12 @@ public class CommentDao {
         }
         return commentList;
     }
-
+    /**
+     *  Tato metoda ukládá nový komentář do databáze.
+     *  @param Id_Employee je Id zaměstnance který vkládá komentář.
+     *  @param Id_Issue je Id problému ke kterému přidáváme komentář
+     *  @param Message zpráva kterou ukládáme k danému issue
+     */
     public static void insertComment (int Id_Employee, int Id_Issue, String Message) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "INSERT INTO Comment\n" +

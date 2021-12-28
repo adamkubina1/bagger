@@ -7,12 +7,16 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ *  Tato třída slouží pro vytvoření napojení do databáze MySQL
+ */
 public class DBUtil {
     private static Connection connection = null;
 
     private static final String connectionString = "jdbc:mysql://localhost:3306/Bagger_test";
-
+    /**
+     *  Tato metoda slouží pro navázání spojení s databází MySQL
+     */
     public static void dbConnect() throws SQLException, ClassNotFoundException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,7 +36,9 @@ public class DBUtil {
             throw e;
         }
     }
-
+    /**
+     *  Tato metoda slouží pro zrušení spojení mezi aplikací a databází.
+     */
     public static void dbDisconnect() throws SQLException {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -42,7 +48,10 @@ public class DBUtil {
             throw e;
         }
     }
-
+    /**
+     *  Tato metoda slouží pro spouštění jednotlivých MySQL querries které jsou posílýny z DAO tříd
+     *  @param queryStmt je string ve kterém je napsáno MySQL querry které provede akci v databázi
+     */
     public static ResultSet dbExecuteQuery(String queryStmt) throws SQLException, ClassNotFoundException {
         Statement stmt = null;
         ResultSet resultSet = null;
@@ -71,7 +80,10 @@ public class DBUtil {
         }
         return crs;
     }
-
+    /**
+     *  Tato metoda slouží pro spouštění update statementů a aktualizuje informace v databázi.
+     *  @param sqlStmt je string ve kterém je napsáno MySQL querry které provede akci v databázi
+     */
     public static void dbExecuteUpdate(String sqlStmt) throws SQLException, ClassNotFoundException {
         Statement stmt = null;
         try {
