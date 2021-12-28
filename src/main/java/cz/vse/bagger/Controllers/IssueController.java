@@ -43,7 +43,7 @@ public class IssueController {
         IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
 
-        mainPageController.reload();
+        mainPageController.reloadIssues();
         Stage stage = (Stage) newIssueButton.getScene().getWindow();
         stage.close();
     }

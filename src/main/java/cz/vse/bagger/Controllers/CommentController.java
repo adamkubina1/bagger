@@ -29,7 +29,7 @@ public class CommentController {
     public void sendMessage() throws SQLException, ClassNotFoundException {
         CommentDao.insertComment(RootLayoutController.loggedEmployee.getId_Employee(),id_Issue, message.getText());
 
-        mainPageController.reload();
+        mainPageController.reloadComments();
 
         Stage stage = (Stage) sendButton.getScene().getWindow();
         stage.close();
