@@ -193,6 +193,21 @@ public class MainPageController {
         closeIssue.setDisable(true);
     }
 
+    public void reloadIssues() throws SQLException, ClassNotFoundException {
+        issues.getItems().clear();
+        issueName.clear();
+        issuePriority.clear();
+        issueDescription.clear();
+
+        Project selectedProject = projects.getSelectionModel().getSelectedItem();
+
+        issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
+
+        newComment.setDisable(true);
+        editIssue.setDisable(true);
+        closeIssue.setDisable(true);
+    }
+
     public void closeIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         Alert conformation = RootLayoutController.giveConfirmation("Close issue", "Permanent issue removal", "You are about to permanently remove this issue, are you sure?");
 
