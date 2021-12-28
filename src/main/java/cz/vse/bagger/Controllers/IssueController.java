@@ -23,8 +23,6 @@ public class IssueController {
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
         long millis=System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
-        java.sql.Date endDate = new java.sql.Date(00);//FUCKING HEELLLL
-
 
         try {
             Integer.parseInt(newIssuePriority.getText());
@@ -42,7 +40,7 @@ public class IssueController {
         }
 
 
-        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date,endDate, Integer.parseInt(newIssuePriority.getText()));//FUCKING HELLL  OTVIRAME ZAVIRAME ROVKOUUUUUUUUUUUU
+        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));//FUCKING HELLL  OTVIRAME ZAVIRAME ROVKOUUUUUUUUUUUU
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
         Stage stage = (Stage) newIssueButton.getScene().getWindow();
         stage.close();
