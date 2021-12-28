@@ -8,11 +8,9 @@ public class Issue {
     private IntegerProperty Id_Issue;
     private IntegerProperty Id_Project;
     private IntegerProperty Id_Creater;
-    private IntegerProperty Id_Closer;
     private StringProperty Issue_Title;
     private StringProperty Issue_Description;
     private SimpleObjectProperty<Date> Start_Date;
-    private SimpleObjectProperty<Date> End_Date;
     private IntegerProperty Importance;
 
     @Override
@@ -24,11 +22,9 @@ public class Issue {
         this.Id_Issue = new SimpleIntegerProperty();
         this.Id_Project = new SimpleIntegerProperty();
         this.Id_Creater = new SimpleIntegerProperty();
-        this.Id_Closer = new SimpleIntegerProperty();
         this.Issue_Title = new SimpleStringProperty();
         this.Issue_Description = new SimpleStringProperty();
         this.Start_Date = new SimpleObjectProperty<>();
-        this.End_Date = new SimpleObjectProperty<>();
         this.Importance = new SimpleIntegerProperty();
     }
 
@@ -68,18 +64,6 @@ public class Issue {
         this.Id_Creater.set(id_Creater);
     }
 
-    public int getId_Closer() {
-        return Id_Closer.get();
-    }
-
-    public IntegerProperty id_CloserProperty() {
-        return Id_Closer;
-    }
-
-    public void setId_Closer(int id_Closer) {
-        this.Id_Closer.set(id_Closer);
-    }
-
     public String getIssue_Title() {
         return Issue_Title.get();
     }
@@ -114,18 +98,6 @@ public class Issue {
 
     public void setStart_Date(Date start_Date) {
         this.Start_Date.set(start_Date);
-    }
-
-    public Date getEnd_Date() {
-        return End_Date.get();
-    }
-
-    public SimpleObjectProperty<Date> end_DateProperty() {
-        return End_Date;
-    }
-
-    public void setEnd_Date(Date end_Date) {
-        this.End_Date.set(end_Date);
     }
 
     public int getImportance() {

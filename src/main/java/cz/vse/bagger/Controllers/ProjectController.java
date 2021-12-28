@@ -52,6 +52,8 @@ public class ProjectController {
 //            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
 
             mainPageController.reload();
+            Stage stage = (Stage) addMyTeam.getScene().getWindow();
+            stage.close();
         }
     }
 

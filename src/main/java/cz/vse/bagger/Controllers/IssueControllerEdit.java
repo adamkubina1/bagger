@@ -30,14 +30,9 @@ public class IssueControllerEdit {
     public void issueEdit(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException, ParseException {
         SimpleDateFormat pom = new SimpleDateFormat("yyyyMMdd");
         Date xx = wholeIssue.getStart_Date();
-        Date yy = wholeIssue.getEnd_Date();
         Date pom2 = pom.parse(String.valueOf(xx));
         Long result1 = Long.valueOf(pom.format(pom2));
         java.sql.Date startDate = new java.sql.Date(result1);
-
-        Date pom3 = pom.parse(String.valueOf(yy));
-        Long result2 = Long.valueOf(pom.format(pom3));
-        java.sql.Date endDate = new java.sql.Date(result2);
 
         try {
             Integer.parseInt(issuePriority.getText());
@@ -54,11 +49,12 @@ public class IssueControllerEdit {
             return;
         }
 
-        IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),wholeIssue.getId_Closer(),issue.getText(),issueDescription.getText(),startDate,endDate,Integer.parseInt(issuePriority.getText()));
+        IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
+
+        mainPageController.reload();
         Stage stage = (Stage) issueEdit.getScene().getWindow();
         stage.close();
-        mainPageController.reload();
     }
 
     public void loadData() {

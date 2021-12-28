@@ -45,11 +45,9 @@ public class IssueDao {
             issue.setId_Issue(resultIssue.getInt("Id_Issue"));
             issue.setId_Project(resultIssue.getInt("Id_Project"));
             issue.setId_Creater(resultIssue.getInt("Id_Creater"));
-            issue.setId_Closer(resultIssue.getInt("Id_Closer"));
             issue.setIssue_Title(resultIssue.getString("Issue_Title"));
             issue.setIssue_Description(resultIssue.getString("Issue_Description"));
             issue.setStart_Date(resultIssue.getDate("Start_Date"));
-            issue.setEnd_Date(resultIssue.getDate("End_Date"));
             issue.setImportance(resultIssue.getInt("Importance"));
         }
         return issue;
@@ -61,11 +59,9 @@ public class IssueDao {
             issue.setId_Issue(resultIssues.getInt("Id_Issue"));
             issue.setId_Project(resultIssues.getInt("Id_Project"));
             issue.setId_Creater(resultIssues.getInt("Id_Creater"));
-            issue.setId_Closer(resultIssues.getInt("Id_Closer"));
             issue.setIssue_Title(resultIssues.getString("Issue_Title"));
             issue.setIssue_Description(resultIssues.getString("Issue_Description"));
             issue.setStart_Date(resultIssues.getDate("Start_Date"));
-            issue.setEnd_Date(resultIssues.getDate("End_Date"));
             issue.setImportance(resultIssues.getInt("Importance"));
             issuesList.add(issue);
         }
@@ -92,27 +88,23 @@ public class IssueDao {
             issue.setId_Issue(resultIssue.getInt("Id_Issue"));
             issue.setId_Project(resultIssue.getInt("Id_Project"));
             issue.setId_Creater(resultIssue.getInt("Id_Creater"));
-            issue.setId_Closer(resultIssue.getInt("Id_Closer"));
             issue.setIssue_Title(resultIssue.getString("Issue_Title"));
             issue.setIssue_Description(resultIssue.getString("Issue_Description"));
             issue.setStart_Date(resultIssue.getDate("Start_Date"));
-            issue.setEnd_Date(resultIssue.getDate("End_Date"));
             issue.setImportance(resultIssue.getInt("Importance"));
             issueList.add(issue);
         }
         return issueList;
     }
 
-    public static void updateIssue (int Id_Issue, int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
+    public static void updateIssue (int Id_Issue, int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "   UPDATE Issue\n" +
                         "      SET Id_Project = '" + Id_Project + "'\n" +
                         "      , Id_Creater = '" + Id_Creater + "'\n" +
-                        "      , Id_Closer = '" + Id_Closer + "'\n" +
                         "      , Issue_Title = '" + Issue_Title + "'\n" +
                         "      , Issue_Description = '" + Issue_Description + "'\n" +
                         "      , Start_Date = '" + Start_Date + "'\n" +
-                        "      , End_Date = '" + End_Date + "'\n" +
                         "      , Importance = '" + Importance + "'\n" +
                         "    WHERE Id_Issue = " + Id_Issue + ";";
         try {
@@ -124,12 +116,12 @@ public class IssueDao {
         }
     }
 
-    public static void insertIssue (int Id_Project, int Id_Creater, int Id_Closer, String Issue_Title, String Issue_Description, Date Start_Date, Date End_Date, int Importance) throws SQLException, ClassNotFoundException {
+    public static void insertIssue (int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
         String updateStmt =
                         "INSERT INTO Issue\n" +
-                        "(Id_Project, Id_Creater, Id_Closer, Issue_Title, Issue_Description, Start_Date, End_Date, Importance)\n" +
+                        "(Id_Project, Id_Creater, Issue_Title, Issue_Description, Start_Date, Importance)\n" +
                         "VALUES\n" +
-                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Id_Closer+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+End_Date+"', '"+Importance+"');";
+                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+Importance+"');";
 
         try {
             DBUtil.dbExecuteUpdate(updateStmt);
