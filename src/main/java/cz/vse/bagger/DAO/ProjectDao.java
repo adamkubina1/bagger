@@ -83,7 +83,10 @@ public class ProjectDao {
     }
 
     public static ObservableList<Project> searchNotUsedProjects (int teamID) throws SQLException, ClassNotFoundException {
-        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Team_Project_Relationship RIGHT join Project on Team_Project_Relationship.Id_Project = Project.Id_Project where Team_Project_Relationship.Id_Team <> " + teamID;
+        String selectStmt =  "select Project.Id_Project, Project.Project_Name from Project join Team_Project_Relationship\n" +
+                "on Project.Id_Project = Team_Project_Relationship.Id_Project \n" +
+                "where Project.Id_Project not in (select Project.Id_Project from Project join Team_Project_Relationship\n" +
+                "on Project.Id_Project = Team_Project_Relationship.Id_Project where Team_Project_Relationship.Id_Team ="+ teamID +" );";
 
         try {
             ResultSet resultProjects = DBUtil.dbExecuteQuery(selectStmt);

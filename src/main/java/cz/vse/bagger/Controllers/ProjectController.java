@@ -25,10 +25,10 @@ public class ProjectController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
         projectDescription.setEditable(false); //Project description is not implemented yet
-        addMyTeam.setDisable(true); //Add team to project is not  implemented yet
+        addMyTeam.setDisable(false);
 
-//        projectsList.getItems().clear();
-//        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projectsList.getItems().clear();
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
     }
 
     public void transferController(MainPageController mainPageController) {
@@ -48,8 +48,8 @@ public class ProjectController {
             ProjectDao.insertProject(projectNameText);
             ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getId_Team(), ProjectDao.searchProject(projectNameText).getId_Project());
 
-//            projectsList.getItems().clear();
-//            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+            projectsList.getItems().clear();
+            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
 
             mainPageController.reload();
             Stage stage = (Stage) addMyTeam.getScene().getWindow();
@@ -58,17 +58,17 @@ public class ProjectController {
     }
 
     public void addMyTeamToProject(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
-//        TODO add this feature
-//        Project selectedProject = projectsList.getSelectionModel().getSelectedItem();
-//
-//        if(Objects.isNull(selectedProject))return;
-//
-//        ProjectDao.insertTeamToProject(selectedProject.getId_Project(), RootLayoutController.loggedEmployeeTeam.getId_Team());
-//
-//        projectsList.getItems().clear();
-//        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
-//
-//        mainPageController.reload();
+        Project selectedProject = projectsList.getSelectionModel().getSelectedItem();
+
+        if(Objects.isNull(selectedProject))
+            return;
+
+        ProjectDao.insertTeamToProject(selectedProject.getId_Project(), RootLayoutController.loggedEmployeeTeam.getId_Team());
+
+        projectsList.getItems().clear();
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+
+        mainPageController.reload();
 
     }
 }
