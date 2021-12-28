@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.MainPageController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.MainPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1200.0" minWidth="10.0" prefWidth="1200.0" />
   </columnConstraints>
@@ -26,17 +26,29 @@
     <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../imgs/bagger-logo.png" />
-         </image>
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/bagger-logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Bagger">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
-      </ImageView>
+      </VBox>
       <Label fx:id="userLabel" text="User" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets right="200.0" top="20.0" />
+            <Insets right="250.0" top="20.0" />
          </GridPane.margin>
          <font>
             <Font size="24.0" />
@@ -44,13 +56,13 @@
       </Label>
       <Label fx:id="teamLabel" text="Team" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets left="200.0" top="20.0" />
+            <Insets left="225.0" top="20.0" />
          </GridPane.margin>
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView onMouseClicked="#openSettings" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#openSettings" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../imgs/settings-logo.png" />
          </image>
@@ -72,9 +84,9 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0">
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="373.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="424.0">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="87.0" prefWidth="373.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="127.0" text="My projects">
                                  <font>
@@ -99,19 +111,16 @@
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
                         </HBox>
-                        <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="200.0" prefWidth="365.0" />
+                        <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="197.0" prefWidth="373.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
-                              <Button fx:id="newProject" onMouseClicked="#newProject" mnemonicParsing="false" text="New project">
+                              <Button fx:id="newProject" mnemonicParsing="false" onMouseClicked="#newProject" text="New project">
                                  <HBox.margin>
                                     <Insets left="60.0" right="30.0" />
                                  </HBox.margin>
                               </Button>
-                              <ImageView fx:id="deleteProject" onMouseClicked="#deleteProject" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="deleteProject" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#deleteProject" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../imgs/delete-logo.png" />
                                  </image>
@@ -129,7 +138,7 @@
                         <Insets right="20.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0">
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="373.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="42.0" prefWidth="424.0">
                            <children>
@@ -157,10 +166,10 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="200.0" prefWidth="365.0" />
-                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
+                        <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="245.0" prefWidth="373.0" />
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="373.0">
                            <children>
-                              <Button fx:id="newIssue" onMouseClicked="#newIssue" mnemonicParsing="false" text="New issue">
+                              <Button fx:id="newIssue" mnemonicParsing="false" onMouseClicked="#newIssue" text="New issue">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -220,8 +229,8 @@
                               <Insets top="30.0" />
                            </VBox.margin>
                         </HBox>
-                        <ListView fx:id="comments" prefHeight="602.0" prefWidth="350.0" />
-                        <Button fx:id="newComment" onMouseClicked="#newComment" mnemonicParsing="false" text="New comment">
+                        <ListView fx:id="comments" prefHeight="619.0" prefWidth="383.0" />
+                        <Button fx:id="newComment" mnemonicParsing="false" onMouseClicked="#newComment" text="New comment">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
@@ -256,17 +265,21 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="360.0" />
-                        <Button fx:id="editIssue" onMouseClicked="#editIssue" mnemonicParsing="false" text="Edit issue">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="closeIssue" onMouseClicked="#closeIssue" mnemonicParsing="false" text="Close issue">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Button>
+                        <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="360.0" />
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="71.0" prefWidth="384.0">
+                           <children>
+                              <Button fx:id="editIssue" mnemonicParsing="false" onMouseClicked="#editIssue" text="Edit issue">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="closeIssue" mnemonicParsing="false" onMouseClicked="#closeIssue" text="Close issue">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                      <GridPane.margin>
                         <Insets right="20.0" />
