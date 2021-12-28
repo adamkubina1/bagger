@@ -157,6 +157,7 @@ public class MainPageController {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         IssueControllerEdit issueControllerEdit = loader.getController();
         issueControllerEdit.getIssue(selectedIssue);
+        issueControllerEdit.loadData();
 
         primaryStage.setScene(scene);
         primaryStage.show();
