@@ -10,9 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.LoginController">
    <bottom>
-      <Button fx:id="loginButton" onMouseClicked="#clickLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login" BorderPane.alignment="CENTER">
+      <Button fx:id="loginButton" onMouseClicked="#clickLogin" styleClass="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="20.0" />
          </BorderPane.margin>
@@ -46,4 +47,7 @@
          </children>
       </VBox>
    </top>
+   <stylesheets>
+      <URL value="@../style/main.css" />
+   </stylesheets>
 </BorderPane>
