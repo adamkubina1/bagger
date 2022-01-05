@@ -30,7 +30,7 @@ public class IssueController {
      *  A reloadne issues tak aby se z databáze načetl seznam i s novým záznamem.
      */
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
-        long millis=System.currentTimeMillis();
+        long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
 
         try {

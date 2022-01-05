@@ -10,20 +10,21 @@ import java.sql.SQLException;
  *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class Login_CredentialsDAO {
+
     /**
      *  Tato metoda vyhledá v databázi Login_Credentials které mají konkrétní Id
-     *  @param Id_Login_Credentials Id říká jaký Login_credentials chceme vrátit
+     *  @param idLoginCredentials Id říká jaký Login_credentials chceme vrátit
      */
-    public static Login_Credentials searchLoginCredentials (int Id_Login_Credentials) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials inner join Employee on Login_Credentials.Id_Login_Credentials = Employee.Id_Login_Credentials where Employee.Id_Employee = "+Id_Login_Credentials;
+    public static Login_Credentials searchLoginCredentials (int idLoginCredentials) throws SQLException, ClassNotFoundException {
+        final String SELECT_STMT = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials inner join Employee on Login_Credentials.Id_Login_Credentials = Employee.Id_Login_Credentials where Employee.Id_Employee = "+idLoginCredentials;
 
         try {
-            ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(SELECT_STMT);
             Login_Credentials login_credentials = getLoginCredentialsFromResultSet(resultLoginCredentials);
 
             return login_credentials;
         } catch (SQLException exception) {
-            System.out.println("While searching an Login_Credentials with " + Id_Login_Credentials + " id, an error occurred: " + exception);
+            System.out.println("While searching an Login_Credentials with " + idLoginCredentials + " id, an error occurred: " + exception);
             throw exception;
         }
     }
@@ -33,9 +34,10 @@ public class Login_CredentialsDAO {
      *  @param password heslo které musí souhlasit v databázi aby to vrátilo záznam
      */
     public static Login_Credentials login(String username, String password) throws SQLException, ClassNotFoundException {
-        String validate = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials WHERE Login_Credentials.Login_Name = \"" + username + "\" AND Login_Credentials.Password = \"" + password + "\"";
+        final String VALIDATE = "SELECT Login_Credentials.Id_Login_Credentials, Login_Credentials.Login_Name, Login_Credentials.Password from Login_Credentials WHERE Login_Credentials.Login_Name = \"" + username + "\" AND Login_Credentials.Password = \"" + password + "\"";
+
         try {
-            ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(validate);
+            ResultSet resultLoginCredentials = DBUtil.dbExecuteQuery(VALIDATE);
             Login_Credentials login_credentials = getLoginCredentialsFromResultSet(resultLoginCredentials);
             return login_credentials;
         } catch (SQLException exception) {
@@ -61,16 +63,16 @@ public class Login_CredentialsDAO {
     }
     /**
      *  Tato metoda updatuje existující záznam o hesle v databázi
-     *  @param Id_Login_Credentials Id podle kterého najdeme záznam který chceme updatovat
-     *  @param Password nové heslo kterým updatujeme ten starý záznam
+     *  @param idLoginCredentials Id podle kterého najdeme záznam který chceme updatovat
+     *  @param password nové heslo kterým updatujeme ten starý záznam
      */
- public static void updateLoginCredentialsPassword (int Id_Login_Credentials, String Password) throws SQLException, ClassNotFoundException {
-     String updateStmt =
+ public static void updateLoginCredentialsPassword (int idLoginCredentials, String password) throws SQLException, ClassNotFoundException {
+     final String UPDATE_STMT =
      "   UPDATE Login_Credentials\n" +
-     "      SET Password = '" + Password + "'\n" +
-     "    WHERE Id_Login_Credentials = " + Id_Login_Credentials + ";";
+     "      SET Password = '" + password + "'\n" +
+     "    WHERE Id_Login_Credentials = " + idLoginCredentials + ";";
     try {
-        DBUtil.dbExecuteUpdate(updateStmt);
+        DBUtil.dbExecuteUpdate(UPDATE_STMT);
     }
     catch (SQLException exception) {
         System.out.print("Error occurred while UPDATE Operation: " + exception);

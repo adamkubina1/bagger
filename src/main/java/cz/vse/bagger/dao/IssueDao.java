@@ -13,19 +13,20 @@ import java.sql.SQLException;
  *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class IssueDao {
+
     /**
      *  Tato metoda vyhledá v databázi Issues patřící pod konkrétní projekt
-     *  @param Id_Project Id projektu říká pod který projekt dané issues patří
+     *  @param idProject Id projektu říká pod který projekt dané issues patří
      */
-    public static ObservableList<Issue> searchIssueOnProject (int Id_Project) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Issue WHERE Id_Project="+Id_Project;
+    public static ObservableList<Issue> searchIssueOnProject (int idProject) throws SQLException, ClassNotFoundException {
+        final String SELECT_STMT = "SELECT * FROM Issue WHERE Id_Project="+idProject;
 
         try {
-            ResultSet resultIssue = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultIssue = DBUtil.dbExecuteQuery(SELECT_STMT);
             ObservableList<Issue> issues = getIssueListFromResultSet(resultIssue);
             return issues;
         } catch (SQLException exception) {
-            System.out.println("While searching issue with " + Id_Project + " id, an error occurred: " + exception);
+            System.out.println("While searching issue with " + idProject + " id, an error occurred: " + exception);
             throw exception;
         }
     }
@@ -33,7 +34,7 @@ public class IssueDao {
      *  Tato metoda zpracovává výsledek ze searchIssueOnProject metody a záznamy které ta metoda vrátila dává do Listu.
      *  @param resultIssues je výsledek který vrátila databáze na naše querry.
      */
-    private static ObservableList<Issue> getIssueListFromResultSet(ResultSet resultIssues) throws SQLException, ClassNotFoundException {
+    private static ObservableList<Issue> getIssueListFromResultSet(ResultSet resultIssues) throws SQLException {
         ObservableList<Issue> issuesList = FXCollections.observableArrayList();
         while (resultIssues.next()) {
             Issue issue = new Issue();
@@ -50,26 +51,26 @@ public class IssueDao {
     }
     /**
      *  Tato metoda ukládá nový komentář do databáze.
-     *  @param Id_Issue je Id issue které chceme updatnout
-     *  @param Id_Project je Id projektu ke kterému to issue patří
-     *  @param Id_Creater Id zaměstnance který vytvořil issue
-     *  @param Issue_Title název issue
-     *  @param Issue_Description zpráva kterou ukládáme k danému issue
-     *  @param Start_Date datum vytvoření issue
-     *  @param Importance říká jak důležitý je daný issue
+     *  @param idIssue je Id issue které chceme updatnout
+     *  @param idProject je Id projektu ke kterému to issue patří
+     *  @param idCreater Id zaměstnance který vytvořil issue
+     *  @param issueTitle název issue
+     *  @param issueDescription zpráva kterou ukládáme k danému issue
+     *  @param startDate datum vytvoření issue
+     *  @param importance říká jak důležitý je daný issue
      */
-    public static void updateIssue (int Id_Issue, int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
-        String updateStmt =
+    public static void updateIssue (int idIssue, int idProject, int idCreater, String issueTitle, String issueDescription, Date startDate, int importance) throws SQLException, ClassNotFoundException {
+        final String UPDATE_STMT =
                         "   UPDATE Issue\n" +
-                        "      SET Id_Project = '" + Id_Project + "'\n" +
-                        "      , Id_Creater = '" + Id_Creater + "'\n" +
-                        "      , Issue_Title = '" + Issue_Title + "'\n" +
-                        "      , Issue_Description = '" + Issue_Description + "'\n" +
-                        "      , Start_Date = '" + Start_Date + "'\n" +
-                        "      , Importance = '" + Importance + "'\n" +
-                        "    WHERE Id_Issue = " + Id_Issue + ";";
+                        "      SET Id_Project = '" + idProject + "'\n" +
+                        "      , Id_Creater = '" + idCreater + "'\n" +
+                        "      , Issue_Title = '" + issueTitle + "'\n" +
+                        "      , Issue_Description = '" + issueDescription + "'\n" +
+                        "      , Start_Date = '" + startDate + "'\n" +
+                        "      , Importance = '" + importance + "'\n" +
+                        "    WHERE Id_Issue = " + idIssue + ";";
         try {
-            DBUtil.dbExecuteUpdate(updateStmt);
+            DBUtil.dbExecuteUpdate(UPDATE_STMT);
         }
         catch (SQLException exception) {
             System.out.print("Error occurred while UPDATE Operation: " + exception);
@@ -78,22 +79,22 @@ public class IssueDao {
     }
     /**
      *  Tato metoda ukládá nový issue do databáze.
-     *  @param Id_Project je Id projektu ke kterému to issue patří
-     *  @param Id_Creater Id zaměstnance který vytvořil issue
-     *  @param Issue_Title název issue
-     *  @param Issue_Description zpráva kterou ukládáme k danému issue
-     *  @param Start_Date datum vytvoření issue
-     *  @param Importance říká jak důležitý je daný issue
+     *  @param idProject je Id projektu ke kterému to issue patří
+     *  @param idCreater Id zaměstnance který vytvořil issue
+     *  @param issueTitle název issue
+     *  @param issueDescription zpráva kterou ukládáme k danému issue
+     *  @param startDate datum vytvoření issue
+     *  @param importance říká jak důležitý je daný issue
      */
-    public static void insertIssue (int Id_Project, int Id_Creater, String Issue_Title, String Issue_Description, Date Start_Date, int Importance) throws SQLException, ClassNotFoundException {
-        String updateStmt =
+    public static void insertIssue (int idProject, int idCreater, String issueTitle, String issueDescription, Date startDate, int importance) throws SQLException, ClassNotFoundException {
+        final String UPDATE_STMT =
                         "INSERT INTO Issue\n" +
                         "(Id_Project, Id_Creater, Issue_Title, Issue_Description, Start_Date, Importance)\n" +
                         "VALUES\n" +
-                        "('"+Id_Project+"', '"+Id_Creater+"', '"+Issue_Title+"','"+Issue_Description+"', '"+Start_Date+"', '"+Importance+"');";
+                        "('"+idProject+"', '"+idCreater+"', '"+issueTitle+"','"+issueDescription+"', '"+startDate+"', '"+importance+"');";
 
         try {
-            DBUtil.dbExecuteUpdate(updateStmt);
+            DBUtil.dbExecuteUpdate(UPDATE_STMT);
         } catch (SQLException exception) {
             System.out.print("Error occurred while INSERT Operation: " + exception);
             throw exception;
@@ -101,14 +102,14 @@ public class IssueDao {
     }
     /**
      *  Tato metoda smaže v databázi Issue s daným Id
-     *  @param Id_Issue Id Issue které chceme vymazat
+     *  @param idIssue Id Issue které chceme vymazat
      */
-    public static void deleteIssueWithId (int Id_Issue) throws SQLException, ClassNotFoundException {
-        String deleteStmt =
+    public static void deleteIssueWithId (int idIssue) throws SQLException, ClassNotFoundException {
+        final String DELETE_STMT =
                         "   DELETE FROM Issue\n" +
-                        "         WHERE Id_Issue ="+ Id_Issue +";";
+                        "         WHERE Id_Issue ="+ idIssue +";";
         try {
-            DBUtil.dbExecuteUpdate(deleteStmt);
+            DBUtil.dbExecuteUpdate(DELETE_STMT);
         } catch (SQLException exception) {
             System.out.print("Error occurred while DELETE Operation: " + exception);
             throw exception;

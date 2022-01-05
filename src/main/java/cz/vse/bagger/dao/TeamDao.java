@@ -10,35 +10,36 @@ import java.sql.SQLException;
  *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class TeamDao {
+
     /**
      *  Tato metoda vyhledá v databázi Team který má dané team Id
-     *  @param Id_Team Id říká jaký tým chceme vyhledat
+     *  @param idTeam Id říká jaký tým chceme vyhledat
      */
-    public static Team searchTeam (String Id_Team) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Team WHERE Id_Team="+Id_Team;
+    public static Team searchTeam (String idTeam) throws SQLException, ClassNotFoundException {
+        final String SELECT_STMT = "SELECT * FROM Team WHERE Id_Team="+idTeam;
 
         try {
-            ResultSet resultTeam = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultTeam = DBUtil.dbExecuteQuery(SELECT_STMT);
             Team team = getTeamFromResultSet(resultTeam);
             return team;
         } catch (SQLException exception) {
-            System.out.println("While searching team with " + Id_Team + " id, an error occurred: " + exception);
+            System.out.println("While searching team with " + idTeam + " id, an error occurred: " + exception);
             throw exception;
         }
     }
     /**
      *  Tato metoda vyhledá v databázi Team podle jeho vedoucího
-     *  @param Id_Leader říká jaké id má daný leader abychom vyhledaly záznam
+     *  @param idLeader říká jaké id má daný leader abychom vyhledaly záznam
      */
-    public static Team searchTeamOnLeader (String Id_Leader) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM Team WHERE Id_Leader="+Id_Leader;
+    public static Team searchTeamOnLeader (String idLeader) throws SQLException, ClassNotFoundException {
+        final String SELECT_STMT = "SELECT * FROM Team WHERE Id_Leader="+idLeader;
 
         try {
-            ResultSet resultTeam = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultTeam = DBUtil.dbExecuteQuery(SELECT_STMT);
             Team team = getTeamFromResultSet(resultTeam);
             return team;
         } catch (SQLException exception) {
-            System.out.println("While searching team with " + Id_Leader + " id, an error occurred: " + exception);
+            System.out.println("While searching team with " + idLeader + " id, an error occurred: " + exception);
             throw exception;
         }
     }
