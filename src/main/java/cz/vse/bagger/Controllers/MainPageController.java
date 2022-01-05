@@ -224,6 +224,7 @@ public class MainPageController {
         issueName.clear();
         issuePriority.clear();
         issueDescription.clear();
+        comments.getItems().clear();
 
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
 
