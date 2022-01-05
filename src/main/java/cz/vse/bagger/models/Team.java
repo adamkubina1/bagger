@@ -12,49 +12,49 @@ import javafx.beans.property.StringProperty;
  */
 
 public class Team {
-    private IntegerProperty Id_Team;
-    private IntegerProperty Id_Leader;
-    private StringProperty Team_Name;
+    private IntegerProperty idTeam;
+    private IntegerProperty idLeader;
+    private StringProperty teamName;
 
     public Team() {
-        this.Id_Team = new SimpleIntegerProperty();
-        this.Id_Leader = new SimpleIntegerProperty();
-        this.Team_Name = new SimpleStringProperty();
+        this.idTeam = new SimpleIntegerProperty();
+        this.idLeader = new SimpleIntegerProperty();
+        this.teamName = new SimpleStringProperty();
     }
 
-    public int getId_Team() {
-        return Id_Team.get();
+    public int getIdTeam() {
+        return idTeam.get();
     }
 
-    public IntegerProperty id_TeamProperty() {
-        return Id_Team;
+    public IntegerProperty idTeamProperty() {
+        return idTeam;
     }
 
-    public void setId_Team(int id_Team) {
-        this.Id_Team.set(id_Team);
+    public void setIdTeam(int idTeam) {
+        this.idTeam.set(idTeam);
     }
 
-    public int getId_Leader() {
-        return Id_Leader.get();
+    public int getIdLeader() {
+        return idLeader.get();
     }
 
-    public IntegerProperty id_LeaderProperty() {
-        return Id_Leader;
+    public IntegerProperty idLeaderProperty() {
+        return idLeader;
     }
 
-    public void setId_Leader(int id_Leader) {
-        this.Id_Leader.set(id_Leader);
+    public void setIdLeader(int idLeader) {
+        this.idLeader.set(idLeader);
     }
 
-    public String getTeam_Name() {
-        return Team_Name.get();
+    public String getTeamName() {
+        return teamName.get();
     }
 
-    public StringProperty team_NameProperty() {
-        return Team_Name;
+    public StringProperty teamNameProperty() {
+        return teamName;
     }
 
-    public void setTeam_Name(String team_Name) {
-        this.Team_Name.set(team_Name);
+    public void setTeamName(String teamName) {
+        this.teamName.set(teamName);
     }
 }

@@ -38,8 +38,8 @@ public class ProjectDao {
         Project project = null;
         if (resultProject.next()) {
             project = new Project();
-            project.setId_Project(resultProject.getInt("Id_Project"));
-            project.setProject_Name(resultProject.getString("Project_Name"));
+            project.setIdProject(resultProject.getInt("Id_Project"));
+            project.setProjectName(resultProject.getString("Project_Name"));
         }
         return project;
     }
@@ -88,8 +88,8 @@ public class ProjectDao {
         ObservableList<Project> projectList = FXCollections.observableArrayList();
         while (resultProjects.next()) {
             Project project = new Project();
-            project.setId_Project(resultProjects.getInt("Id_Project"));
-            project.setProject_Name(resultProjects.getString("Project_Name"));
+            project.setIdProject(resultProjects.getInt("Id_Project"));
+            project.setProjectName(resultProjects.getString("Project_Name"));
             projectList.add(project);
         }
         return projectList;

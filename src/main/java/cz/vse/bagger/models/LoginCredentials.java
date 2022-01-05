@@ -12,49 +12,49 @@ import javafx.beans.property.StringProperty;
  */
 
 public class LoginCredentials {
-    private IntegerProperty Id_Login_Credentials;
-    private StringProperty Login_Name;
-    private StringProperty Password;
+    private IntegerProperty idLoginCredentials;
+    private StringProperty loginName;
+    private StringProperty password;
 
     public LoginCredentials() {
-        this.Id_Login_Credentials = new SimpleIntegerProperty();
-        this.Login_Name = new SimpleStringProperty();
-        this.Password = new SimpleStringProperty();
+        this.idLoginCredentials = new SimpleIntegerProperty();
+        this.loginName = new SimpleStringProperty();
+        this.password = new SimpleStringProperty();
     }
 
-    public int getId_Login_Credentials() {
-        return Id_Login_Credentials.get();
+    public int getIdLoginCredentials() {
+        return idLoginCredentials.get();
     }
 
-    public IntegerProperty id_Login_CredentialsProperty() {
-        return Id_Login_Credentials;
+    public IntegerProperty idLoginCredentialsProperty() {
+        return idLoginCredentials;
     }
 
-    public void setId_Login_Credentials(int id_Login_Credentials) {
-        this.Id_Login_Credentials.set(id_Login_Credentials);
+    public void setIdLoginCredentials(int idLoginCredentials) {
+        this.idLoginCredentials.set(idLoginCredentials);
     }
 
-    public String getLogin_Name() {
-        return Login_Name.get();
+    public String getLoginName() {
+        return loginName.get();
     }
 
-    public StringProperty login_NameProperty() {
-        return Login_Name;
+    public StringProperty loginNameProperty() {
+        return loginName;
     }
 
-    public void setLogin_Name(String login_Name) {
-        this.Login_Name.set(login_Name);
+    public void setLoginName(String loginName) {
+        this.loginName.set(loginName);
     }
 
     public String getPassword() {
-        return Password.get();
+        return password.get();
     }
 
     public StringProperty passwordProperty() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        this.Password.set(password);
+        this.password.set(password);
     }
 }

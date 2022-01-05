@@ -8,68 +8,68 @@ import javafx.beans.property.*;
  */
 
 public class Comment {
-    private IntegerProperty Id_Comment;
-    private IntegerProperty Id_Employee;
-    private IntegerProperty Id_Issue;
-    private StringProperty Message;
+    private IntegerProperty idComment;
+    private IntegerProperty idEmployee;
+    private IntegerProperty idIssue;
+    private StringProperty message;
 
     public Comment() {
-        this.Id_Comment = new SimpleIntegerProperty();
-        this.Id_Employee = new SimpleIntegerProperty();
-        this.Id_Issue = new SimpleIntegerProperty();
-        this.Message = new SimpleStringProperty();
+        this.idComment = new SimpleIntegerProperty();
+        this.idEmployee = new SimpleIntegerProperty();
+        this.idIssue = new SimpleIntegerProperty();
+        this.message = new SimpleStringProperty();
     }
 
     @Override
     public String toString() {
-        return Message.getValue();
+        return message.getValue();
     }
 
-    public int getId_Comment() {
-        return Id_Comment.get();
+    public int getIdComment() {
+        return idComment.get();
     }
 
-    public IntegerProperty id_CommentProperty() {
-        return Id_Comment;
+    public IntegerProperty idCommentProperty() {
+        return idComment;
     }
 
-    public void setId_Comment(int id_Comment) {
-        this.Id_Comment.set(id_Comment);
+    public void setIdComment(int idComment) {
+        this.idComment.set(idComment);
     }
 
-    public int getId_Employee() {
-        return Id_Employee.get();
+    public int getIdEmployee() {
+        return idEmployee.get();
     }
 
-    public IntegerProperty id_EmployeeProperty() {
-        return Id_Employee;
+    public IntegerProperty idEmployeeProperty() {
+        return idEmployee;
     }
 
-    public void setId_Employee(int id_Employee) {
-        this.Id_Employee.set(id_Employee);
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee.set(idEmployee);
     }
 
-    public int getId_Issue() {
-        return Id_Issue.get();
+    public int getIdIssue() {
+        return idIssue.get();
     }
 
-    public IntegerProperty id_IssueProperty() {
-        return Id_Issue;
+    public IntegerProperty idIssueProperty() {
+        return idIssue;
     }
 
-    public void setId_Issue(int id_Issue) {
-        this.Id_Issue.set(id_Issue);
+    public void setIdIssue(int idIssue) {
+        this.idIssue.set(idIssue);
     }
 
     public String getMessage() {
-        return Message.get();
+        return message.get();
     }
 
     public StringProperty messageProperty() {
-        return Message;
+        return message;
     }
 
     public void setMessage(String message) {
-        this.Message.set(message);
+        this.message.set(message);
     }
 }

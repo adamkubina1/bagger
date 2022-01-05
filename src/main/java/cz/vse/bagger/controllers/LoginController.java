@@ -58,7 +58,7 @@ public class LoginController{
      *  Tato metoda slouží k otevření hlavního okna po úspěšném příhlášení a také uloží údaje o uživateli do statických proměných.
      */
     private void succesfullLogin(LoginCredentials validLoginCredentials) throws SQLException, ClassNotFoundException {
-        Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getId_Login_Credentials());
+        Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getIdLoginCredentials());
         RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this
 
         try {

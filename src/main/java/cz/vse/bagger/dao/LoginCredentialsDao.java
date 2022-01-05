@@ -54,8 +54,8 @@ public class LoginCredentialsDao {
         LoginCredentials login_credentials = null;
         if (resultLoginCredentials.next()) {
             login_credentials = new LoginCredentials();
-            login_credentials.setId_Login_Credentials(resultLoginCredentials.getInt("Id_Login_Credentials"));
-            login_credentials.setLogin_Name(resultLoginCredentials.getString("Login_Name"));
+            login_credentials.setIdLoginCredentials(resultLoginCredentials.getInt("Id_Login_Credentials"));
+            login_credentials.setLoginName(resultLoginCredentials.getString("Login_Name"));
             login_credentials.setPassword(resultLoginCredentials.getString("Password"));
 
         }

@@ -44,7 +44,7 @@ public class CommentController {
      *
      */
     public void sendMessage() throws SQLException, ClassNotFoundException {
-        CommentDao.insertComment(RootLayoutController.loggedEmployee.getId_Employee(), idIssue, message.getText());
+        CommentDao.insertComment(RootLayoutController.loggedEmployee.getIdEmployee(), idIssue, message.getText());
 
         mainPageController.reloadComments();
 

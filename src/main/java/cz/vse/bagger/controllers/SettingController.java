@@ -32,9 +32,9 @@ public class SettingController {
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
         userInfo.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
-        Employee leader = EmployeeDao.searchEmployee(RootLayoutController.loggedEmployeeTeam.getId_Leader());
+        Employee leader = EmployeeDao.searchEmployee(RootLayoutController.loggedEmployeeTeam.getIdLeader());
         teamLeader.setText(leader.getName() + " " + leader.getSurname());
-        teamEmployees.addAll(EmployeeDao.searchEmployeesByTeamId(RootLayoutController.loggedEmployeeTeam.getId_Team()));
+        teamEmployees.addAll(EmployeeDao.searchEmployeesByTeamId(RootLayoutController.loggedEmployeeTeam.getIdTeam()));
         List<String> pom = new ArrayList<>();
         for (Employee employee : teamEmployees){
             pom.add(employee.getName() + " " + employee.getSurname());
@@ -45,7 +45,7 @@ public class SettingController {
      *  Tato metoda slouží pro změnění hesla a vyhodí chybu když zadáte původní heslo špatně nebo nové heslo nebude 2x stejné
      */
     public void changePassword() throws SQLException, ClassNotFoundException {
-        LoginCredentials login_credentials = LoginCredentialsDao.searchLoginCredentials(RootLayoutController.loggedEmployee.getId_Login_Credentials());
+        LoginCredentials login_credentials = LoginCredentialsDao.searchLoginCredentials(RootLayoutController.loggedEmployee.getIdLoginCredentials());
         if (!oldPassword.getText().equals(login_credentials.getPassword())) {
             RootLayoutController.displayAlert("Nesprávné heslo", "Zadal jsi nesprávné heslo", "Heslo které si zadal jako tvé původní heslo není stejné s tvým původním heslem");
         }
@@ -56,7 +56,7 @@ public class SettingController {
             RootLayoutController.displayAlert("Nespravne heslo", "Prazdne heslo", "Heslo musi obsahovat nejake znaky.");
         }
         else {
-            LoginCredentialsDao.updateLoginCredentialsPassword(login_credentials.getId_Login_Credentials(), newPassword.getText());
+            LoginCredentialsDao.updateLoginCredentialsPassword(login_credentials.getIdLoginCredentials(), newPassword.getText());
             RootLayoutController.displayConfirmation("Úspěch", "Heslo změněno", "Úspěšně jsi si změnil heslo na nové!");
         }
     }

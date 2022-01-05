@@ -29,7 +29,7 @@ public class ProjectController {
      */
     public void initialize() throws SQLException, ClassNotFoundException {
         projectsList.getItems().clear();
-        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
@@ -53,10 +53,10 @@ public class ProjectController {
         }
         else {
             ProjectDao.insertProject(projectNameText);
-            ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getId_Team(), ProjectDao.searchProject(projectNameText).getId_Project());
+            ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getIdTeam(), ProjectDao.searchProject(projectNameText).getIdProject());
 
             projectsList.getItems().clear();
-            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
 
             mainPageController.reload();
             Stage stage = (Stage) addMyTeam.getScene().getWindow();
@@ -72,10 +72,10 @@ public class ProjectController {
         if(Objects.isNull(selectedProject))
             return;
 
-        ProjectDao.insertTeamToProject(selectedProject.getId_Project(), RootLayoutController.loggedEmployeeTeam.getId_Team());
+        ProjectDao.insertTeamToProject(selectedProject.getIdProject(), RootLayoutController.loggedEmployeeTeam.getIdTeam());
 
         projectsList.getItems().clear();
-        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
 
         mainPageController.reload();
 

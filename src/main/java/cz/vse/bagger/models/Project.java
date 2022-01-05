@@ -12,40 +12,40 @@ import javafx.beans.property.StringProperty;
  */
 
 public class Project {
-    private IntegerProperty Id_Project;
-    private StringProperty Project_Name;
+    private IntegerProperty idProject;
+    private StringProperty projectName;
 
     public Project() {
-        this.Id_Project = new SimpleIntegerProperty();
-        this.Project_Name = new SimpleStringProperty();
+        this.idProject = new SimpleIntegerProperty();
+        this.projectName = new SimpleStringProperty();
     }
 
     @Override
     public String toString() {
-        return Project_Name.getValue();
+        return projectName.getValue();
     }
 
-    public int getId_Project() {
-        return Id_Project.get();
+    public int getIdProject() {
+        return idProject.get();
     }
 
-    public IntegerProperty id_ProjectProperty() {
-        return Id_Project;
+    public IntegerProperty idProjectProperty() {
+        return idProject;
     }
 
-    public void setId_Project(int id_Project) {
-        this.Id_Project.set(id_Project);
+    public void setIdProject(int idProject) {
+        this.idProject.set(idProject);
     }
 
-    public String getProject_Name() {
-        return Project_Name.get();
+    public String getProjectName() {
+        return projectName.get();
     }
 
-    public StringProperty project_NameProperty() {
-        return Project_Name;
+    public StringProperty projectNameProperty() {
+        return projectName;
     }
 
-    public void setProject_Name(String project_Name) {
-        this.Project_Name.set(project_Name);
+    public void setProjectName(String projectName) {
+        this.projectName.set(projectName);
     }
 }

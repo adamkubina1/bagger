@@ -11,110 +11,110 @@ import java.util.Date;
  */
 
 public class Issue {
-    private IntegerProperty Id_Issue;
-    private IntegerProperty Id_Project;
-    private IntegerProperty Id_Creater;
-    private StringProperty Issue_Title;
-    private StringProperty Issue_Description;
-    private SimpleObjectProperty<Date> Start_Date;
-    private IntegerProperty Importance;
+    private IntegerProperty idIssue;
+    private IntegerProperty idProject;
+    private IntegerProperty idCreater;
+    private StringProperty issueTitle;
+    private StringProperty issueDescription;
+    private SimpleObjectProperty<Date> startDate;
+    private IntegerProperty importance;
 
     @Override
     public String toString() {
-        return Issue_Title.getValue();
+        return issueTitle.getValue();
     }
 
     public Issue() {
-        this.Id_Issue = new SimpleIntegerProperty();
-        this.Id_Project = new SimpleIntegerProperty();
-        this.Id_Creater = new SimpleIntegerProperty();
-        this.Issue_Title = new SimpleStringProperty();
-        this.Issue_Description = new SimpleStringProperty();
-        this.Start_Date = new SimpleObjectProperty<>();
-        this.Importance = new SimpleIntegerProperty();
+        this.idIssue = new SimpleIntegerProperty();
+        this.idProject = new SimpleIntegerProperty();
+        this.idCreater = new SimpleIntegerProperty();
+        this.issueTitle = new SimpleStringProperty();
+        this.issueDescription = new SimpleStringProperty();
+        this.startDate = new SimpleObjectProperty<>();
+        this.importance = new SimpleIntegerProperty();
     }
 
-    public int getId_Issue() {
-        return Id_Issue.get();
+    public int getIdIssue() {
+        return idIssue.get();
     }
 
-    public IntegerProperty id_IssueProperty() {
-        return Id_Issue;
+    public IntegerProperty idIssueProperty() {
+        return idIssue;
     }
 
-    public void setId_Issue(int id_Issue) {
-        this.Id_Issue.set(id_Issue);
+    public void setIdIssue(int idIssue) {
+        this.idIssue.set(idIssue);
     }
 
-    public int getId_Project() {
-        return Id_Project.get();
+    public int getIdProject() {
+        return idProject.get();
     }
 
-    public IntegerProperty id_ProjectProperty() {
-        return Id_Project;
+    public IntegerProperty idProjectProperty() {
+        return idProject;
     }
 
-    public void setId_Project(int id_Project) {
-        this.Id_Project.set(id_Project);
+    public void setIdProject(int idProject) {
+        this.idProject.set(idProject);
     }
 
-    public int getId_Creater() {
-        return Id_Creater.get();
+    public int getIdCreater() {
+        return idCreater.get();
     }
 
-    public IntegerProperty id_CreaterProperty() {
-        return Id_Creater;
+    public IntegerProperty idCreaterProperty() {
+        return idCreater;
     }
 
-    public void setId_Creater(int id_Creater) {
-        this.Id_Creater.set(id_Creater);
+    public void setIdCreater(int idCreater) {
+        this.idCreater.set(idCreater);
     }
 
-    public String getIssue_Title() {
-        return Issue_Title.get();
+    public String getIssueTitle() {
+        return issueTitle.get();
     }
 
-    public StringProperty issue_TitleProperty() {
-        return Issue_Title;
+    public StringProperty issueTitleProperty() {
+        return issueTitle;
     }
 
-    public void setIssue_Title(String issue_Title) {
-        this.Issue_Title.set(issue_Title);
+    public void setIssueTitle(String issueTitle) {
+        this.issueTitle.set(issueTitle);
     }
 
-    public String getIssue_Description() {
-        return Issue_Description.get();
+    public String getIssueDescription() {
+        return issueDescription.get();
     }
 
-    public StringProperty issue_DescriptionProperty() {
-        return Issue_Description;
+    public StringProperty issueDescriptionProperty() {
+        return issueDescription;
     }
 
-    public void setIssue_Description(String issue_Description) {
-        this.Issue_Description.set(issue_Description);
+    public void setIssueDescription(String issueDescription) {
+        this.issueDescription.set(issueDescription);
     }
 
-    public Date getStart_Date() {
-        return Start_Date.get();
+    public Date getStartDate() {
+        return startDate.get();
     }
 
-    public SimpleObjectProperty<Date> start_DateProperty() {
-        return Start_Date;
+    public SimpleObjectProperty<Date> startDateProperty() {
+        return startDate;
     }
 
-    public void setStart_Date(Date start_Date) {
-        this.Start_Date.set(start_Date);
+    public void setStartDate(Date startDate) {
+        this.startDate.set(startDate);
     }
 
     public int getImportance() {
-        return Importance.get();
+        return importance.get();
     }
 
     public IntegerProperty importanceProperty() {
-        return Importance;
+        return importance;
     }
 
     public void setImportance(int importance) {
-        this.Importance.set(importance);
+        this.importance.set(importance);
     }
 }

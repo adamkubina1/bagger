@@ -42,7 +42,7 @@ public class IssueControllerEdit {
      */
     public void issueEdit(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException, ParseException {
         SimpleDateFormat pom = new SimpleDateFormat("yyyyMMdd");
-        Date xx = wholeIssue.getStart_Date();
+        Date xx = wholeIssue.getStartDate();
         Date pom2 = pom.parse(String.valueOf(xx));
         Long result1 = Long.valueOf(pom.format(pom2));
         java.sql.Date startDate = new java.sql.Date(result1);
@@ -62,7 +62,7 @@ public class IssueControllerEdit {
             return;
         }
 
-        IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
+        IssueDao.updateIssue(wholeIssue.getIdIssue(),wholeIssue.getIdProject(),wholeIssue.getIdCreater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
 
         mainPageController.reloadIssues();
@@ -74,9 +74,9 @@ public class IssueControllerEdit {
      *
      */
     public void loadData() {
-        issue.setText(wholeIssue.getIssue_Title());
+        issue.setText(wholeIssue.getIssueTitle());
         issuePriority.setText(String.valueOf(wholeIssue.getImportance()));
-        issueDescription.setText(wholeIssue.getIssue_Description());
+        issueDescription.setText(wholeIssue.getIssueDescription());
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru

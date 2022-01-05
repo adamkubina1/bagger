@@ -52,9 +52,9 @@ public class TeamDao {
         Team team = null;
         if (resultTeam.next()) {
             team = new Team();
-            team.setId_Team(resultTeam.getInt("Id_Team"));
-            team.setId_Leader(resultTeam.getInt("Id_Leader"));
-            team.setTeam_Name(resultTeam.getString("Team_Name"));
+            team.setIdTeam(resultTeam.getInt("Id_Team"));
+            team.setIdLeader(resultTeam.getInt("Id_Leader"));
+            team.setTeamName(resultTeam.getString("Team_Name"));
 
         }
         return team;

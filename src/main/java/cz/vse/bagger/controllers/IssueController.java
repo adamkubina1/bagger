@@ -49,7 +49,7 @@ public class IssueController {
         }
 
 
-        IssueDao.insertIssue(idProject, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
+        IssueDao.insertIssue(idProject, RootLayoutController.loggedEmployee.getIdEmployee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
 
         mainPageController.reloadIssues();

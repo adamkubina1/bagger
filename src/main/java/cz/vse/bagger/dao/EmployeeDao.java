@@ -41,9 +41,9 @@ public class EmployeeDao {
         Employee employee = null;
         if (resultEmployee.next()) {
             employee = new Employee();
-            employee.setId_Employee(resultEmployee.getInt("Id_Employee"));
-            employee.setId_Team(resultEmployee.getInt("Id_Team"));
-            employee.setId_Login_Credentials(resultEmployee.getInt("Id_Login_Credentials"));
+            employee.setIdEmployee(resultEmployee.getInt("Id_Employee"));
+            employee.setIdTeam(resultEmployee.getInt("Id_Team"));
+            employee.setIdLoginCredentials(resultEmployee.getInt("Id_Login_Credentials"));
             employee.setName(resultEmployee.getString("Name"));
             employee.setSurname(resultEmployee.getString("Surname"));
             employee.setPosition(resultEmployee.getString("Position"));
@@ -76,9 +76,9 @@ public class EmployeeDao {
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
         while (resultEmployees.next()) {
             Employee employee = new Employee();
-            employee.setId_Employee(resultEmployees.getInt("Id_Employee"));
-            employee.setId_Team(resultEmployees.getInt("Id_Team"));
-            employee.setId_Login_Credentials(resultEmployees.getInt("Id_Login_Credentials"));
+            employee.setIdEmployee(resultEmployees.getInt("Id_Employee"));
+            employee.setIdTeam(resultEmployees.getInt("Id_Team"));
+            employee.setIdLoginCredentials(resultEmployees.getInt("Id_Login_Credentials"));
             employee.setName(resultEmployees.getString("Name"));
             employee.setSurname(resultEmployees.getString("Surname"));
             employee.setPosition(resultEmployees.getString("Position"));

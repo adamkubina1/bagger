@@ -37,9 +37,9 @@ public class CommentDao {
 
         while (resultComments.next()) {
             Comment comment = new Comment();;
-            comment.setId_Comment(resultComments.getInt("Id_Comment"));
-            comment.setId_Employee(resultComments.getInt("Id_Employee"));
-            comment.setId_Issue(resultComments.getInt("Id_Issue"));
+            comment.setIdComment(resultComments.getInt("Id_Comment"));
+            comment.setIdEmployee(resultComments.getInt("Id_Employee"));
+            comment.setIdIssue(resultComments.getInt("Id_Issue"));
             comment.setMessage(resultComments.getString("Message"));
             commentList.add(comment);
         }

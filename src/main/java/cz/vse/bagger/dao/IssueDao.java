@@ -38,12 +38,12 @@ public class IssueDao {
         ObservableList<Issue> issuesList = FXCollections.observableArrayList();
         while (resultIssues.next()) {
             Issue issue = new Issue();
-            issue.setId_Issue(resultIssues.getInt("Id_Issue"));
-            issue.setId_Project(resultIssues.getInt("Id_Project"));
-            issue.setId_Creater(resultIssues.getInt("Id_Creater"));
-            issue.setIssue_Title(resultIssues.getString("Issue_Title"));
-            issue.setIssue_Description(resultIssues.getString("Issue_Description"));
-            issue.setStart_Date(resultIssues.getDate("Start_Date"));
+            issue.setIdIssue(resultIssues.getInt("Id_Issue"));
+            issue.setIdProject(resultIssues.getInt("Id_Project"));
+            issue.setIdCreater(resultIssues.getInt("Id_Creater"));
+            issue.setIssueTitle(resultIssues.getString("Issue_Title"));
+            issue.setIssueDescription(resultIssues.getString("Issue_Description"));
+            issue.setStartDate(resultIssues.getDate("Start_Date"));
             issue.setImportance(resultIssues.getInt("Importance"));
             issuesList.add(issue);
         }
