@@ -2,7 +2,7 @@ package cz.vse.bagger.controllers;
 
 import cz.vse.bagger.dao.EmployeeDao;
 
-import cz.vse.bagger.dao.Login_CredentialsDAO;
+import cz.vse.bagger.dao.LoginCredentialsDao;
 import cz.vse.bagger.models.Employee;
 import cz.vse.bagger.models.Login_Credentials;
 import javafx.fxml.FXML;
@@ -45,7 +45,7 @@ public class SettingController {
      *  Tato metoda slouží pro změnění hesla a vyhodí chybu když zadáte původní heslo špatně nebo nové heslo nebude 2x stejné
      */
     public void changePassword() throws SQLException, ClassNotFoundException {
-        Login_Credentials login_credentials = Login_CredentialsDAO.searchLoginCredentials(RootLayoutController.loggedEmployee.getId_Login_Credentials());
+        Login_Credentials login_credentials = LoginCredentialsDao.searchLoginCredentials(RootLayoutController.loggedEmployee.getId_Login_Credentials());
         if (!oldPassword.getText().equals(login_credentials.getPassword())) {
             RootLayoutController.displayAlert("Nesprávné heslo", "Zadal jsi nesprávné heslo", "Heslo které si zadal jako tvé původní heslo není stejné s tvým původním heslem");
         }
@@ -56,7 +56,7 @@ public class SettingController {
             RootLayoutController.displayAlert("Nespravne heslo", "Prazdne heslo", "Heslo musi obsahovat nejake znaky.");
         }
         else {
-            Login_CredentialsDAO.updateLoginCredentialsPassword(login_credentials.getId_Login_Credentials(), newPassword.getText());
+            LoginCredentialsDao.updateLoginCredentialsPassword(login_credentials.getId_Login_Credentials(), newPassword.getText());
             RootLayoutController.displayConfirmation("Úspěch", "Heslo změněno", "Úspěšně jsi si změnil heslo na nové!");
         }
     }

@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *
  *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
-public class Login_CredentialsDAO {
+public class LoginCredentialsDao {
 
     /**
      *  Tato metoda vyhledá v databázi Login_Credentials které mají konkrétní Id

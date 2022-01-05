@@ -1,7 +1,7 @@
 package cz.vse.bagger.controllers;
 
 import cz.vse.bagger.dao.EmployeeDao;
-import cz.vse.bagger.dao.Login_CredentialsDAO;
+import cz.vse.bagger.dao.LoginCredentialsDao;
 import cz.vse.bagger.models.Employee;
 import cz.vse.bagger.models.Login_Credentials;
 import javafx.fxml.FXML;
@@ -40,7 +40,7 @@ public class LoginController{
         }
         else {
 
-            Login_Credentials login_credentials = Login_CredentialsDAO.login(usernameText, passwordText);
+            Login_Credentials login_credentials = LoginCredentialsDao.login(usernameText, passwordText);
 
             // The validation of user credentials failed
             if(Objects.isNull(login_credentials)){
