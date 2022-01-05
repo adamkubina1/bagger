@@ -1,6 +1,6 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.CommentDao;
+import cz.vse.bagger.dao.CommentDao;
 
 import javafx.fxml.FXML;
 

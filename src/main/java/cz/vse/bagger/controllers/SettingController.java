@@ -1,10 +1,10 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.EmployeeDao;
+import cz.vse.bagger.dao.EmployeeDao;
 
-import cz.vse.bagger.DAO.Login_CredentialsDAO;
-import cz.vse.bagger.Models.Employee;
-import cz.vse.bagger.Models.Login_Credentials;
+import cz.vse.bagger.dao.Login_CredentialsDAO;
+import cz.vse.bagger.models.Employee;
+import cz.vse.bagger.models.Login_Credentials;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.ListView;

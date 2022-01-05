@@ -1,6 +1,6 @@
-package cz.vse.bagger.DAO;
+package cz.vse.bagger.dao;
 
-import cz.vse.bagger.Models.Login_Credentials;
+import cz.vse.bagger.models.Login_Credentials;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

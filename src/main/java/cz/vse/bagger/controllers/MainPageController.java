@@ -1,12 +1,12 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.CommentDao;
-import cz.vse.bagger.DAO.IssueDao;
-import cz.vse.bagger.DAO.ProjectDao;
-import cz.vse.bagger.DAO.TeamDao;
-import cz.vse.bagger.Models.Comment;
-import cz.vse.bagger.Models.Issue;
-import cz.vse.bagger.Models.Project;
+import cz.vse.bagger.dao.CommentDao;
+import cz.vse.bagger.dao.IssueDao;
+import cz.vse.bagger.dao.ProjectDao;
+import cz.vse.bagger.dao.TeamDao;
+import cz.vse.bagger.models.Comment;
+import cz.vse.bagger.models.Issue;
+import cz.vse.bagger.models.Project;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package cz.vse.bagger.DAO;
+package cz.vse.bagger.dao;
 import com.sun.rowset.CachedRowSetImpl;
 
 import java.sql.*;

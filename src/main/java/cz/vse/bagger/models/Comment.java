@@ -1,6 +1,5 @@
-package cz.vse.bagger.Models;
+package cz.vse.bagger.models;
 import javafx.beans.property.*;
-import java.sql.Date;
 
 /**
  *  Modelova trida pro databazovou entitu

@@ -1,6 +1,6 @@
-package cz.vse.bagger.DAO;
+package cz.vse.bagger.dao;
 
-import cz.vse.bagger.Models.Issue;
+import cz.vse.bagger.models.Issue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

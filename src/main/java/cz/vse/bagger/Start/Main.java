@@ -1,6 +1,5 @@
 package cz.vse.bagger.Start;
 
-import cz.vse.bagger.DAO.DBUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
