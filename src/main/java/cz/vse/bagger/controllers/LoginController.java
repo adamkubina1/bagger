@@ -3,7 +3,7 @@ package cz.vse.bagger.controllers;
 import cz.vse.bagger.dao.EmployeeDao;
 import cz.vse.bagger.dao.LoginCredentialsDao;
 import cz.vse.bagger.models.Employee;
-import cz.vse.bagger.models.Login_Credentials;
+import cz.vse.bagger.models.LoginCredentials;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,7 +40,7 @@ public class LoginController{
         }
         else {
 
-            Login_Credentials login_credentials = LoginCredentialsDao.login(usernameText, passwordText);
+            LoginCredentials login_credentials = LoginCredentialsDao.login(usernameText, passwordText);
 
             // The validation of user credentials failed
             if(Objects.isNull(login_credentials)){
@@ -57,7 +57,7 @@ public class LoginController{
     /**
      *  Tato metoda slouží k otevření hlavního okna po úspěšném příhlášení a také uloží údaje o uživateli do statických proměných.
      */
-    private void succesfullLogin(Login_Credentials validLoginCredentials) throws SQLException, ClassNotFoundException {
+    private void succesfullLogin(LoginCredentials validLoginCredentials) throws SQLException, ClassNotFoundException {
         Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getId_Login_Credentials());
         RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this
 

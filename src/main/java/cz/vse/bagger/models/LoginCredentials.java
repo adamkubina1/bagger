@@ -11,12 +11,12 @@ import javafx.beans.property.StringProperty;
  *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 
-public class Login_Credentials {
+public class LoginCredentials {
     private IntegerProperty Id_Login_Credentials;
     private StringProperty Login_Name;
     private StringProperty Password;
 
-    public Login_Credentials() {
+    public LoginCredentials() {
         this.Id_Login_Credentials = new SimpleIntegerProperty();
         this.Login_Name = new SimpleStringProperty();
         this.Password = new SimpleStringProperty();
