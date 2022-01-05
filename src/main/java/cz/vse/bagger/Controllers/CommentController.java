@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu comment
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class CommentController {
 

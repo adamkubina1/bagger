@@ -2,6 +2,12 @@ package cz.vse.bagger.Models;
 
 import javafx.beans.property.*;
 
+/**
+ *  Modelova trida pro databazovou entitu
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
+
 public class Employee {
     private IntegerProperty Id_Employee;
     private IntegerProperty Id_Team;

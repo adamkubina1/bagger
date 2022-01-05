@@ -24,6 +24,8 @@ import java.util.Optional;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu main
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class MainPageController {
     public ImageView deleteProject;

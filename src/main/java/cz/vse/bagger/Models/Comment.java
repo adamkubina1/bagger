@@ -2,6 +2,12 @@ package cz.vse.bagger.Models;
 import javafx.beans.property.*;
 import java.sql.Date;
 
+/**
+ *  Modelova trida pro databazovou entitu
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
+
 public class Comment {
     private IntegerProperty Id_Comment;
     private IntegerProperty Id_Employee;

@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  *  Tato třída slouží pro zpracování příkazů k tabulkce Comment
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class CommentDao {
     /**

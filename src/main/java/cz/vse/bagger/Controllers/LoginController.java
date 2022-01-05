@@ -18,6 +18,8 @@ import java.util.Objects;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu login
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class LoginController{
     @FXML private TextField username;

@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  *  Tato třída slouží pro vytvoření napojení do databáze MySQL
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class DBUtil {
     private static Connection connection = null;

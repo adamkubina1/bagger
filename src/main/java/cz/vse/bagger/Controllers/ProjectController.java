@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu newProject
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class ProjectController {
 

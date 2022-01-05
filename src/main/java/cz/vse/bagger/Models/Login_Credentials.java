@@ -5,6 +5,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ *  Modelova trida pro databazovou entitu
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
+
 public class Login_Credentials {
     private IntegerProperty Id_Login_Credentials;
     private StringProperty Login_Name;

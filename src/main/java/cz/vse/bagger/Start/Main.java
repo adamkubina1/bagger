@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ *  Root class
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
 
 public class Main extends Application {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

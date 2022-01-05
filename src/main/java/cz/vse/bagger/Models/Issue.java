@@ -4,6 +4,12 @@ import javafx.beans.property.*;
 
 import java.util.Date;
 
+/**
+ *  Modelova trida pro databazovou entitu
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
+
 public class Issue {
     private IntegerProperty Id_Issue;
     private IntegerProperty Id_Project;

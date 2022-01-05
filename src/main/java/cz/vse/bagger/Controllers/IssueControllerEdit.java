@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu editIssue
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class IssueControllerEdit {
     @FXML TextField issue;

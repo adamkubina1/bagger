@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu settings
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class SettingController {
     @FXML TextField user_Info;
