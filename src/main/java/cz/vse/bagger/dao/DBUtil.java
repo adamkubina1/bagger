@@ -1,4 +1,4 @@
-package cz.vse.bagger.DAO;
+package cz.vse.bagger.dao;
 import com.sun.rowset.CachedRowSetImpl;
 
 import java.sql.*;
@@ -9,11 +9,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  *  Tato třída slouží pro vytvoření napojení do databáze MySQL
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class DBUtil {
     private static Connection connection = null;
 
-    private static final String connectionString = "jdbc:mysql://localhost:3306/Bagger_test";
+    private static final String CONNECTION_PATH = "jdbc:mysql://localhost:3306/Bagger_test";
+
     /**
      *  Tato metoda slouží pro navázání spojení s databází MySQL
      */
@@ -26,10 +29,8 @@ public class DBUtil {
             throw e;
         }
 
-        System.out.println("JDBC Driver Registered!");
-
         try {
-            connection = DriverManager.getConnection(connectionString, "root", "");
+            connection = DriverManager.getConnection(CONNECTION_PATH, "root", "");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console" + e);
             e.printStackTrace();
@@ -55,7 +56,8 @@ public class DBUtil {
     public static ResultSet dbExecuteQuery(String queryStmt) throws SQLException, ClassNotFoundException {
         Statement stmt = null;
         ResultSet resultSet = null;
-        CachedRowSetImpl crs = null;
+        CachedRowSetImpl crs;
+
         try {
             dbConnect();
             System.out.println("Select statement: " + queryStmt + "\n");

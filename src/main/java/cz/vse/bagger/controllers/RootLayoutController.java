@@ -1,10 +1,12 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.Models.Employee;
-import cz.vse.bagger.Models.Team;
+import cz.vse.bagger.models.Employee;
+import cz.vse.bagger.models.Team;
 import javafx.scene.control.Alert;
 /**
  *  Tato třída pro uchování statických proměných uživatele a pro vyvolání alertů
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class RootLayoutController {
     public static Employee loggedEmployee; // Realy unsafe way of doing this

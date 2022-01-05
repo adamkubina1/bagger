@@ -1,11 +1,10 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.ProjectDao;
-import cz.vse.bagger.Models.Project;
+import cz.vse.bagger.dao.ProjectDao;
+import cz.vse.bagger.models.Project;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -15,6 +14,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu newProject
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class ProjectController {
 
@@ -28,7 +29,7 @@ public class ProjectController {
      */
     public void initialize() throws SQLException, ClassNotFoundException {
         projectsList.getItems().clear();
-        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
@@ -52,10 +53,10 @@ public class ProjectController {
         }
         else {
             ProjectDao.insertProject(projectNameText);
-            ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getId_Team(), ProjectDao.searchProject(projectNameText).getId_Project());
+            ProjectDao.insertTeam_projectRelationship(RootLayoutController.loggedEmployeeTeam.getIdTeam(), ProjectDao.searchProject(projectNameText).getIdProject());
 
             projectsList.getItems().clear();
-            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+            projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
 
             mainPageController.reload();
             Stage stage = (Stage) addMyTeam.getScene().getWindow();
@@ -71,10 +72,10 @@ public class ProjectController {
         if(Objects.isNull(selectedProject))
             return;
 
-        ProjectDao.insertTeamToProject(selectedProject.getId_Project(), RootLayoutController.loggedEmployeeTeam.getId_Team());
+        ProjectDao.insertTeamToProject(selectedProject.getIdProject(), RootLayoutController.loggedEmployeeTeam.getIdTeam());
 
         projectsList.getItems().clear();
-        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getId_Team())));
+        projectsList.getItems().addAll(ProjectDao.searchNotUsedProjects((RootLayoutController.loggedEmployeeTeam.getIdTeam())));
 
         mainPageController.reload();
 

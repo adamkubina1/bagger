@@ -1,7 +1,7 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.IssueDao;
-import cz.vse.bagger.Models.Issue;
+import cz.vse.bagger.dao.IssueDao;
+import cz.vse.bagger.models.Issue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu editIssue
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class IssueControllerEdit {
     @FXML TextField issue;
@@ -40,7 +42,7 @@ public class IssueControllerEdit {
      */
     public void issueEdit(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException, ParseException {
         SimpleDateFormat pom = new SimpleDateFormat("yyyyMMdd");
-        Date xx = wholeIssue.getStart_Date();
+        Date xx = wholeIssue.getStartDate();
         Date pom2 = pom.parse(String.valueOf(xx));
         Long result1 = Long.valueOf(pom.format(pom2));
         java.sql.Date startDate = new java.sql.Date(result1);
@@ -60,7 +62,7 @@ public class IssueControllerEdit {
             return;
         }
 
-        IssueDao.updateIssue(wholeIssue.getId_Issue(),wholeIssue.getId_Project(),wholeIssue.getId_Creater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
+        IssueDao.updateIssue(wholeIssue.getIdIssue(),wholeIssue.getIdProject(),wholeIssue.getIdCreater(),issue.getText(),issueDescription.getText(),startDate,Integer.parseInt(issuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi updatoval", "Úspěšně jsi updatoval záznam o chybě do databáze");
 
         mainPageController.reloadIssues();
@@ -72,9 +74,9 @@ public class IssueControllerEdit {
      *
      */
     public void loadData() {
-        issue.setText(wholeIssue.getIssue_Title());
+        issue.setText(wholeIssue.getIssueTitle());
         issuePriority.setText(String.valueOf(wholeIssue.getImportance()));
-        issueDescription.setText(wholeIssue.getIssue_Description());
+        issueDescription.setText(wholeIssue.getIssueDescription());
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru

@@ -1,6 +1,6 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.IssueDao;
+import cz.vse.bagger.dao.IssueDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu newIssue
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class IssueController {
     @FXML TextField newIssue;
@@ -19,7 +21,7 @@ public class IssueController {
     @FXML TextArea newIssueDescription;
     @FXML Button newIssueButton;
 
-    private int Id_Project;
+    private int idProject;
     private MainPageController mainPageController;
     /**
      *  Tato metoda slouží k tomu aby se mohl přidat nový issue.
@@ -28,7 +30,7 @@ public class IssueController {
      *  A reloadne issues tak aby se z databáze načetl seznam i s novým záznamem.
      */
     public void addNewIssue(MouseEvent mouseEvent) throws SQLException, ClassNotFoundException {
-        long millis=System.currentTimeMillis();
+        long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
 
         try {
@@ -47,7 +49,7 @@ public class IssueController {
         }
 
 
-        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
+        IssueDao.insertIssue(idProject, RootLayoutController.loggedEmployee.getIdEmployee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
 
         mainPageController.reloadIssues();
@@ -57,10 +59,10 @@ public class IssueController {
     /**
      *  Tato metoda slouží k tomu aby se mohlo předat IdProject z jednoho Controlleru do druhého
      *
-     *  @param Id_Project skrz tento parameter se předává id projektu z MainPageControlleru do CommentControlleru
+     *  @param idProject skrz tento parameter se předává id projektu z MainPageControlleru do CommentControlleru
      */
-    public void getId_Project(int Id_Project) {
-        this.Id_Project = Id_Project;
+    public void getIdProject(int idProject) {
+        this.idProject = idProject;
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru

@@ -1,9 +1,9 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.EmployeeDao;
-import cz.vse.bagger.DAO.Login_CredentialsDAO;
-import cz.vse.bagger.Models.Employee;
-import cz.vse.bagger.Models.Login_Credentials;
+import cz.vse.bagger.dao.EmployeeDao;
+import cz.vse.bagger.dao.LoginCredentialsDao;
+import cz.vse.bagger.models.Employee;
+import cz.vse.bagger.models.LoginCredentials;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +18,8 @@ import java.util.Objects;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu login
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class LoginController{
     @FXML private TextField username;
@@ -38,7 +40,7 @@ public class LoginController{
         }
         else {
 
-            Login_Credentials login_credentials = Login_CredentialsDAO.login(usernameText, passwordText);
+            LoginCredentials login_credentials = LoginCredentialsDao.login(usernameText, passwordText);
 
             // The validation of user credentials failed
             if(Objects.isNull(login_credentials)){
@@ -55,8 +57,8 @@ public class LoginController{
     /**
      *  Tato metoda slouží k otevření hlavního okna po úspěšném příhlášení a také uloží údaje o uživateli do statických proměných.
      */
-    private void succesfullLogin(Login_Credentials validLoginCredentials) throws SQLException, ClassNotFoundException {
-        Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getId_Login_Credentials());
+    private void succesfullLogin(LoginCredentials validLoginCredentials) throws SQLException, ClassNotFoundException {
+        Employee loggedEmployee = EmployeeDao.searchEmployee(validLoginCredentials.getIdLoginCredentials());
         RootLayoutController.loggedEmployee = loggedEmployee; // This is super unsafe way of doing this
 
         try {

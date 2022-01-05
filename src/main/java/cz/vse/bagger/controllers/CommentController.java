@@ -1,6 +1,6 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.CommentDao;
+import cz.vse.bagger.dao.CommentDao;
 
 import javafx.fxml.FXML;
 
@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu comment
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class CommentController {
 
@@ -19,15 +21,15 @@ public class CommentController {
     @FXML Button sendButton;
 
     private MainPageController mainPageController;
-    private int id_Issue;
+    private int idIssue;
 
     /**
      *  Tato metoda slouží k tomu aby se mohlo předat IdIssue z jednoho Controlleru do druhého
      *
-     *  @param id_Issue skrz tento parameter se předává id chyby z MainPageControlleru do CommentControlleru
+     *  @param idIssue skrz tento parameter se předává id chyby z MainPageControlleru do CommentControlleru
      */
-    public void transferIssueId(int id_Issue) {
-        this.id_Issue = id_Issue;
+    public void transferIssueId(int idIssue) {
+        this.idIssue = idIssue;
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do commentControlleru
@@ -42,7 +44,7 @@ public class CommentController {
      *
      */
     public void sendMessage() throws SQLException, ClassNotFoundException {
-        CommentDao.insertComment(RootLayoutController.loggedEmployee.getId_Employee(),id_Issue, message.getText());
+        CommentDao.insertComment(RootLayoutController.loggedEmployee.getIdEmployee(), idIssue, message.getText());
 
         mainPageController.reloadComments();
 

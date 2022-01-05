@@ -1,6 +1,5 @@
 package cz.vse.bagger.Start;
 
-import cz.vse.bagger.DAO.DBUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,10 +8,14 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ *  Root class
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
+ */
 
 public class Main extends Application {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        DBUtil.dbConnect();
         launch();
     }
 

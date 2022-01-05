@@ -1,12 +1,12 @@
-package cz.vse.bagger.Controllers;
+package cz.vse.bagger.controllers;
 
-import cz.vse.bagger.DAO.CommentDao;
-import cz.vse.bagger.DAO.IssueDao;
-import cz.vse.bagger.DAO.ProjectDao;
-import cz.vse.bagger.DAO.TeamDao;
-import cz.vse.bagger.Models.Comment;
-import cz.vse.bagger.Models.Issue;
-import cz.vse.bagger.Models.Project;
+import cz.vse.bagger.dao.CommentDao;
+import cz.vse.bagger.dao.IssueDao;
+import cz.vse.bagger.dao.ProjectDao;
+import cz.vse.bagger.dao.TeamDao;
+import cz.vse.bagger.models.Comment;
+import cz.vse.bagger.models.Issue;
+import cz.vse.bagger.models.Project;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +24,8 @@ import java.util.Optional;
 
 /**
  *  Tato třída slouží jako ovládací kontroler k fxml oknu main
+ *
+ *  @author Adam Kubina, Jiri Omacht, Martin Kalina
  */
 public class MainPageController {
     public ImageView deleteProject;
@@ -49,19 +51,19 @@ public class MainPageController {
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException {
 
-        RootLayoutController.loggedEmployeeTeam = TeamDao.searchTeam(String.valueOf(RootLayoutController.loggedEmployee.getId_Team()));
+        RootLayoutController.loggedEmployeeTeam = TeamDao.searchTeam(String.valueOf(RootLayoutController.loggedEmployee.getIdTeam()));
 
         userLabel.setText(RootLayoutController.loggedEmployee.getName() + " " + RootLayoutController.loggedEmployee.getSurname());
-        teamLabel.setText(RootLayoutController.loggedEmployeeTeam.getTeam_Name());
+        teamLabel.setText(RootLayoutController.loggedEmployeeTeam.getTeamName());
 
-        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
+        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getIdTeam()));
 
         newComment.setDisable(true);
         newIssue.setDisable(true);
         editIssue.setDisable(true);
         closeIssue.setDisable(true);
 
-        if(Objects.isNull(TeamDao.searchTeamOnLeader(String.valueOf(RootLayoutController.loggedEmployee.getId_Employee())))){
+        if(Objects.isNull(TeamDao.searchTeamOnLeader(String.valueOf(RootLayoutController.loggedEmployee.getIdEmployee())))){
             newProject.setDisable(true);
             deleteProject.setDisable(true);
         }
@@ -86,7 +88,7 @@ public class MainPageController {
         editIssue.setDisable(true);
         closeIssue.setDisable(true);
 
-        issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
+        issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getIdProject()));
     }
 
     /**
@@ -102,16 +104,16 @@ public class MainPageController {
         issuePriority.clear();
         issueDescription.clear();
 
-        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
+        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getIdIssue()));
 
         newComment.setDisable(false);
         newIssue.setDisable(false);
         editIssue.setDisable(false);
         closeIssue.setDisable(false);
 
-        issueName.setText(selectedIssue.getIssue_Title());
+        issueName.setText(selectedIssue.getIssueTitle());
         issuePriority.setText(String.valueOf(selectedIssue.getImportance()));
-        issueDescription.setText(selectedIssue.getIssue_Description());
+        issueDescription.setText(selectedIssue.getIssueDescription());
     }
     /**
      *  Tato metoda otevře fxml okno pro vytvoření nového projektu a pošle do jeho controlleru vlastní instanci
@@ -141,7 +143,7 @@ public class MainPageController {
 
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
         IssueController issueController = loader.getController();
-        issueController.getId_Project(selectedProject.getId_Project());
+        issueController.getIdProject(selectedProject.getIdProject());
         issueController.transferController(this);
 
         primaryStage.setScene(scene);
@@ -159,7 +161,7 @@ public class MainPageController {
 
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         CommentController commentController = loader.getController();
-        commentController.transferIssueId(selectedIssue.getId_Issue());
+        commentController.transferIssueId(selectedIssue.getIdIssue());
         commentController.transferController(this);
 
         primaryStage.setScene(scene);
@@ -208,7 +210,7 @@ public class MainPageController {
         issuePriority.clear();
         issueDescription.clear();
 
-        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getId_Team()));
+        projects.getItems().addAll(ProjectDao.searchProjects(RootLayoutController.loggedEmployeeTeam.getIdTeam()));
 
         newComment.setDisable(true);
         newIssue.setDisable(true);
@@ -228,7 +230,7 @@ public class MainPageController {
 
         Project selectedProject = projects.getSelectionModel().getSelectedItem();
 
-        issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getId_Project()));
+        issues.getItems().addAll(IssueDao.searchIssueOnProject(selectedProject.getIdProject()));
 
         newComment.setDisable(true);
         editIssue.setDisable(true);
@@ -241,7 +243,7 @@ public class MainPageController {
         Issue selectedIssue = issues.getSelectionModel().getSelectedItem();
         comments.getItems().clear();
 
-        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getId_Issue()));
+        comments.getItems().addAll(CommentDao.searchComments(selectedIssue.getIdIssue()));
     }
     /**
      *  Tato metoda se nejdřív uživatele zeptá jestli fakt chce zavrít issue a pak zavolá metodu pro zavření daného issue
@@ -257,7 +259,7 @@ public class MainPageController {
                 RootLayoutController.displayAlert("Delete error", "No issue selected", "Please select issue for deletion.");
             } else {
 
-                IssueDao.deleteIssueWithId(selectedIssue.getId_Issue());
+                IssueDao.deleteIssueWithId(selectedIssue.getIdIssue());
 
                 reload();
             }
@@ -277,7 +279,7 @@ public class MainPageController {
             if(Objects.isNull(selectedProject)){
                 RootLayoutController.displayAlert("Delete error", "No project selected", "Please select project for deletion.");
             } else {
-                ProjectDao.deleteProjectWithId(selectedProject.getId_Project());
+                ProjectDao.deleteProjectWithId(selectedProject.getIdProject());
 
                 reload();
             }
