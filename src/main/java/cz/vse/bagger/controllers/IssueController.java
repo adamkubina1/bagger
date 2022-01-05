@@ -21,7 +21,7 @@ public class IssueController {
     @FXML TextArea newIssueDescription;
     @FXML Button newIssueButton;
 
-    private int Id_Project;
+    private int idProject;
     private MainPageController mainPageController;
     /**
      *  Tato metoda slouží k tomu aby se mohl přidat nový issue.
@@ -49,7 +49,7 @@ public class IssueController {
         }
 
 
-        IssueDao.insertIssue(Id_Project, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
+        IssueDao.insertIssue(idProject, RootLayoutController.loggedEmployee.getId_Employee(), newIssue.getText(), newIssueDescription.getText(), date, Integer.parseInt(newIssuePriority.getText()));
         RootLayoutController.giveConfirmation("Success", "Úspěšně jsi uložil", "Úspěšně jsi uložil nový záznam do databáze");
 
         mainPageController.reloadIssues();
@@ -59,10 +59,10 @@ public class IssueController {
     /**
      *  Tato metoda slouží k tomu aby se mohlo předat IdProject z jednoho Controlleru do druhého
      *
-     *  @param Id_Project skrz tento parameter se předává id projektu z MainPageControlleru do CommentControlleru
+     *  @param idProject skrz tento parameter se předává id projektu z MainPageControlleru do CommentControlleru
      */
-    public void getId_Project(int Id_Project) {
-        this.Id_Project = Id_Project;
+    public void getIdProject(int idProject) {
+        this.idProject = idProject;
     }
     /**
      *  Tato metoda slouží k tomu aby se mohla předat instance mainPageControlleru z jednoho mainPageControlleru do issueControlleru
