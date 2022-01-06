@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,35 +12,39 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.LoginController">
+<?import javafx.scene.control.PasswordField?>
+<BorderPane fx:id="loginScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="350.0" styleClass="container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.controllers.LoginController">
    <bottom>
-      <Button fx:id="loginButton" onMouseClicked="#clickLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="20.0" minWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Login" BorderPane.alignment="CENTER">
+      <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickLogin" prefHeight="40.0" prefWidth="200.0" styleClass="submitButton" text="Login" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="20.0" />
          </BorderPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </bottom>
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="75.0" minWidth="200.0" prefHeight="142.0" prefWidth="400.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <TextField fx:id="username" maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Username" />
-            <TextField fx:id="password" maxHeight="-Infinity" minHeight="20.0" prefHeight="40.0" promptText="Password">
+            <TextField fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Username" styleClass="inputField" />
+            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="200.0" promptText="Password" styleClass="inputField">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
-            </TextField>
+            </PasswordField>
          </children>
       </VBox>
    </center>
    <top>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="200.0" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="200.0" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="75.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imgs/bagger-logo.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="160.0" text="Bagger" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="160.0" styleClass="loginHeader" text="Bagger" textAlignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
@@ -46,4 +52,7 @@
          </children>
       </VBox>
    </top>
+   <stylesheets>
+      <URL value="@../style/main.css" />
+   </stylesheets>
 </BorderPane>

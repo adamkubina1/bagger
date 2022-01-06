@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.Controllers.MainPageController">
+<GridPane fx:id="mainScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.bagger.controllers.MainPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1200.0" minWidth="10.0" prefWidth="1200.0" />
   </columnConstraints>
@@ -26,31 +27,43 @@
     <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../imgs/bagger-logo.png" />
-         </image>
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/bagger-logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label styleClass="mainLogoText" text="Bagger">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
-      </ImageView>
-      <Label fx:id="userLabel" text="User" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      </VBox>
+      <Label fx:id="userLabel" styleClass="mainInfoText" text="User" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets right="200.0" top="20.0" />
+            <Insets right="230.0" top="20.0" />
          </GridPane.margin>
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="teamLabel" text="Team" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label fx:id="teamLabel" styleClass="mainInfoText" text="Team" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets left="200.0" top="20.0" />
+            <Insets left="225.0" top="20.0" />
          </GridPane.margin>
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView onMouseClicked="#openSettings" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fx:id="settings" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#openSettings" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../imgs/settings-logo.png" />
          </image>
@@ -72,46 +85,28 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0">
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="373.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="424.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="127.0" text="My projects">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="80.0" right="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <image>
-                                    <Image url="@../imgs/sort-logo.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
-                        </HBox>
-                        <ListView fx:id="projects" onMouseClicked="#selectedProject" prefHeight="200.0" prefWidth="365.0" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="176.0" styleClass="labelText" text="My projects">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="38.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="projects" id="projects" styleClass="listView" onMouseClicked="#selectedProject" prefHeight="197.0" prefWidth="373.0" />
                         <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
                            <children>
-                              <Button fx:id="newProject" onMouseClicked="#newProject" mnemonicParsing="false" text="New project">
+                              <Button fx:id="newProject" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newProject" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New project">
                                  <HBox.margin>
                                     <Insets left="60.0" right="30.0" />
                                  </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
-                              <ImageView fx:id="deleteProject" onMouseClicked="#deleteProject" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="deleteProject" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#deleteProject" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../imgs/delete-logo.png" />
                                  </image>
@@ -129,41 +124,23 @@
                         <Insets right="20.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0">
+                  <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="373.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="424.0">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="206.0" styleClass="labelText" text="Project issues">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="issues" styleClass="listView" onMouseClicked="#selectedIssue" prefHeight="245.0" prefWidth="373.0" />
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="373.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="150.0" text="Project issues">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="80.0" right="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <Button fx:id="newIssue" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newIssue" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New issue">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
-                                 <image>
-                                    <Image url="@../imgs/sort-logo.png" />
-                                 </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
-                              </ImageView>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </HBox>
-                        <ListView fx:id="issues" onMouseClicked="#selectedIssue" prefHeight="200.0" prefWidth="365.0" />
-                        <HBox alignment="CENTER" prefHeight="59.0" prefWidth="382.0">
-                           <children>
-                              <Button fx:id="newIssue" onMouseClicked="#newIssue" mnemonicParsing="false" text="New issue">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
                               </Button>
                            </children>
                            <opaqueInsets>
@@ -191,40 +168,22 @@
                <children>
                   <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" GridPane.columnIndex="1">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="424.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="127.0" text="Comments">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="90.0" right="50.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <image>
-                                    <Image url="@../imgs/sort-logo.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                           </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="187.0" styleClass="labelText" text="Comments">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="27.0" />
                            </VBox.margin>
-                        </HBox>
-                        <ListView fx:id="comments" prefHeight="602.0" prefWidth="350.0" />
-                        <Button fx:id="newComment" onMouseClicked="#newComment" mnemonicParsing="false" text="New comment">
+                        </Label>
+                        <ListView fx:id="comments" styleClass="listView" prefHeight="619.0" prefWidth="383.0" />
+                        <Button fx:id="newComment" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#newComment" prefHeight="32.0" prefWidth="220.0" styleClass="submitButton" text="New comment">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                      <GridPane.margin>
@@ -233,40 +192,43 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label text="Issue">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
+                        <Label styleClass="labelText" text="Issue">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="issueName" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
-                        <Label text="Priority">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
+                        <TextField fx:id="issueName" alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
+                        <Label styleClass="labelText" text="Priority">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="issuePriority" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
-                        <Label text="Description">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="360.0" />
-                        <Button fx:id="editIssue" onMouseClicked="#editIssue" mnemonicParsing="false" text="Edit issue">
+                        <TextField fx:id="issuePriority" alignment="CENTER" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="360.0" />
+                        <Label styleClass="labelText" text="Description">
                            <VBox.margin>
                               <Insets top="10.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="closeIssue" onMouseClicked="#closeIssue" mnemonicParsing="false" text="Close issue">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Button>
+                           </VBox.margin></Label>
+                        <TextArea fx:id="issueDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="360.0" />
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="71.0" prefWidth="384.0">
+                           <children>
+                              <Button fx:id="editIssue" mnemonicParsing="false" onMouseClicked="#editIssue" styleClass="editButton" text="Edit issue">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="closeIssue" mnemonicParsing="false" onMouseClicked="#closeIssue" styleClass="removeButton" text="Close issue">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                      <GridPane.margin>
                         <Insets right="20.0" />
@@ -277,4 +239,7 @@
          </children>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@../style/main.css" />
+   </stylesheets>
 </GridPane>
