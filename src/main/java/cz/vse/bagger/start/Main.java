@@ -1,4 +1,4 @@
-package cz.vse.bagger.Start;
+package cz.vse.bagger.start;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
