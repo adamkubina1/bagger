@@ -1,8 +1,8 @@
 # Bagger
-Javafx application with database for project issues managment.
-App includes login system, different teamroles with various privileges and various operations (insertion, update, deletion) of projects, issues and comments.
+Javafx application with database for project issues management.
+App includes login system, different team roles with various privileges, and various operations (insertion, update, deletion) of projects, issues, and comments.
 
-Created as final assignment for Software engineering course at VSE.
+Created as a final assignment for a Software engineering course at VSE.
 
 DDL for MySQL database which is this app based on.
 
